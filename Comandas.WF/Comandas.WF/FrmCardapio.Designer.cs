@@ -31,10 +31,8 @@
             label1 = new Label();
             btnVoltar = new Button();
             textBox1 = new TextBox();
-            button1 = new Button();
+            btnAddItemCardapio = new Button();
             groupBox1 = new GroupBox();
-            button2 = new Button();
-            button3 = new Button();
             dataGridView1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -89,28 +87,6 @@
             groupBox1.Size = new Size(754, 306);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = Color.LightCoral;
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.Location = new Point(27, 404);
-            button2.Name = "button2";
-            button2.Size = new Size(80, 34);
-            button2.TabIndex = 5;
-            button2.Text = "X Excluir";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = Color.PaleGreen;
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.Location = new Point(122, 404);
-            button3.Name = "button3";
-            button3.Size = new Size(89, 34);
-            button3.TabIndex = 6;
-            button3.Text = "# Editar";
-            button3.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 

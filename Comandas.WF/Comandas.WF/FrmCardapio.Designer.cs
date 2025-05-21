@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             btnVoltar = new Button();
-            textBox1 = new TextBox();
+            txtPesquisar = new TextBox();
             btnAddItemCardapio = new Button();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
@@ -39,6 +39,8 @@
             Column3 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewCheckBoxColumn();
+            btnExcluir = new Button();
+            btnEditar = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -54,30 +56,32 @@
             // 
             // btnVoltar
             // 
+            btnVoltar.BackColor = Color.Salmon;
             btnVoltar.Location = new Point(751, 1);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.Size = new Size(46, 38);
             btnVoltar.TabIndex = 1;
             btnVoltar.Text = "X";
-            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.UseVisualStyleBackColor = false;
             btnVoltar.Click += btnVoltar_Click;
             // 
-            // textBox1
+            // txtPesquisar
             // 
-            textBox1.Location = new Point(78, 10);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(543, 23);
-            textBox1.TabIndex = 2;
+            txtPesquisar.Location = new Point(78, 10);
+            txtPesquisar.Name = "txtPesquisar";
+            txtPesquisar.Size = new Size(543, 23);
+            txtPesquisar.TabIndex = 2;
             // 
-            // button1
+            // btnAddItemCardapio
             // 
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button1.Location = new Point(12, 54);
-            button1.Name = "button1";
-            button1.Size = new Size(128, 32);
-            button1.TabIndex = 3;
-            button1.Text = "+ Item cardápio";
-            button1.UseVisualStyleBackColor = true;
+            btnAddItemCardapio.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddItemCardapio.Location = new Point(12, 54);
+            btnAddItemCardapio.Name = "btnAddItemCardapio";
+            btnAddItemCardapio.Size = new Size(128, 32);
+            btnAddItemCardapio.TabIndex = 3;
+            btnAddItemCardapio.Text = "+ Item cardápio";
+            btnAddItemCardapio.UseVisualStyleBackColor = true;
+            btnAddItemCardapio.Click += btnAddItemCardapio_Click;
             // 
             // groupBox1
             // 
@@ -124,16 +128,40 @@
             Column5.Resizable = DataGridViewTriState.True;
             Column5.SortMode = DataGridViewColumnSortMode.Automatic;
             // 
+            // btnExcluir
+            // 
+            btnExcluir.BackColor = Color.LightCoral;
+            btnExcluir.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnExcluir.Location = new Point(27, 404);
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(80, 34);
+            btnExcluir.TabIndex = 5;
+            btnExcluir.Text = "X Excluir";
+            btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.BackColor = Color.PaleGreen;
+            btnEditar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEditar.Location = new Point(122, 404);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(89, 34);
+            btnEditar.TabIndex = 6;
+            btnEditar.Text = "# Editar";
+            btnEditar.UseVisualStyleBackColor = false;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // FrmCardapio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btnEditar);
+            Controls.Add(btnExcluir);
             Controls.Add(groupBox1);
-            Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(btnAddItemCardapio);
+            Controls.Add(txtPesquisar);
             Controls.Add(btnVoltar);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
@@ -150,8 +178,8 @@
 
         private Label label1;
         private Button btnVoltar;
-        private TextBox textBox1;
-        private Button button1;
+        private TextBox txtPesquisar;
+        private Button btnAddItemCardapio;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Column1;
@@ -159,7 +187,7 @@
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewCheckBoxColumn Column5;
-        private Button button2;
-        private Button button3;
+        private Button btnExcluir;
+        private Button btnEditar;
     }
 }

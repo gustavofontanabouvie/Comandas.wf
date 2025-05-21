@@ -17,5 +17,11 @@ namespace Comandas.WF
         {
             Application.Exit();
         }
+
+        private void btnComanda_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmComanda().Show();
+        }
     }
 }

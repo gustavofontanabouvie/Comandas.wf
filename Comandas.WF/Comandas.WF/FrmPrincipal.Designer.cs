@@ -81,6 +81,7 @@
             btnComanda.TabIndex = 0;
             btnComanda.Text = "Comanda";
             btnComanda.UseVisualStyleBackColor = false;
+            btnComanda.Click += btnComanda_Click;
             // 
             // btnCardapio
             // 
@@ -96,13 +97,14 @@
             // 
             // btnFechar
             // 
+            btnFechar.BackColor = Color.Salmon;
             btnFechar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnFechar.Location = new Point(752, 3);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(47, 44);
             btnFechar.TabIndex = 1;
             btnFechar.Text = "X";
-            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.UseVisualStyleBackColor = false;
             btnFechar.Click += button1_Click;
             // 
             // FrmPrincipal

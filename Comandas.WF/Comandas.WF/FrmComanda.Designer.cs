@@ -33,7 +33,10 @@
             btnEditar = new Button();
             btnEncerrar = new Button();
             btnCancelar = new Button();
-            listView1 = new ListView();
+            dataGridView1 = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // btnAddComanda
@@ -88,20 +91,31 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // listView1
+            // dataGridView1
             // 
-            listView1.Location = new Point(75, 90);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(638, 286);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
+            dataGridView1.Location = new Point(75, 102);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(638, 275);
+            dataGridView1.TabIndex = 2;
+            // 
+            // Column1
+            // 
+            Column1.HeaderText = "Mesa";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Cliente";
+            Column2.Name = "Column2";
             // 
             // FrmComanda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            ClientSize = new Size(800, 457);
+            Controls.Add(dataGridView1);
             Controls.Add(txtPesquisarComanda);
             Controls.Add(btnCancelar);
             Controls.Add(btnEncerrar);
@@ -110,6 +124,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmComanda";
             StartPosition = FormStartPosition.CenterScreen;
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -121,6 +136,8 @@
         private Button btnEditar;
         private Button btnEncerrar;
         private Button btnCancelar;
-        private ListView listView1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
     }
 }

@@ -15,6 +15,8 @@ namespace Comandas.WF
         public FrmComanda()
         {
             InitializeComponent();
+            PreencherDataGrid();
+            CriarMesas();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -27,6 +29,33 @@ namespace Comandas.WF
         {
             this.Close();
             new FrmComandaCad().Show();
+        }
+
+        private void CriarMesas()
+        {
+            for (int i = 1; i <= 10; i++)
+            {
+                Mesa mesa = new Mesa();
+                mesa.Numero = i;
+                mesa.Disponivel = true;
+                ListaDeItensEstatica.Mesas.Add(mesa);
+            }
+        }
+        
+        private void PreencherDataGrid()
+        {
+            dataGridView1.Rows.Clear();
+            foreach (var mesa in ListaDeItensEstatica.Mesas)
+            {
+                if (mesa.Disponivel)
+                {
+                    dataGridView1.Rows.Add(mesa.Numero, "Disponível");
+                }
+                else
+                {
+                    dataGridView1.Rows.Add(mesa.Numero, "Ocupada");
+                }
+            }
         }
     }
 }

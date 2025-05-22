@@ -15,12 +15,22 @@ namespace Comandas.WF
         public FrmComandaCad()
         {
             InitializeComponent();
+            PreencherComboBox();
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
             new FrmComanda().Show();
+        }
+
+        private void PreencherComboBox()
+        {
+            cboxItens.Items.Clear();
+            foreach (var item in ListaDeItensEstatica.Itens)
+            {
+                cboxItens.Items.Add(item.Titulo);
+            }
         }
     }
 }

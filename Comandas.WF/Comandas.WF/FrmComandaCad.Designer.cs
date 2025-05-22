@@ -29,19 +29,20 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnAddItem = new Button();
+            cboxItens = new ComboBox();
             label3 = new Label();
             groupBox2 = new GroupBox();
+            txtNomeCliente = new TextBox();
+            cboxMesas = new ComboBox();
             label2 = new Label();
             label1 = new Label();
-            txtNomeCliente = new TextBox();
-            cboxItens = new ComboBox();
-            btnAddItem = new Button();
-            cboxMesas = new ComboBox();
             btnConfirmar = new Button();
             btnCancelar = new Button();
-            listView1 = new ListView();
+            dataGridView1 = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -54,6 +55,25 @@
             groupBox1.Size = new Size(639, 55);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
+            // 
+            // btnAddItem
+            // 
+            btnAddItem.BackColor = Color.LightGreen;
+            btnAddItem.Location = new Point(455, 19);
+            btnAddItem.Name = "btnAddItem";
+            btnAddItem.Size = new Size(40, 25);
+            btnAddItem.TabIndex = 2;
+            btnAddItem.Text = "+";
+            btnAddItem.UseVisualStyleBackColor = false;
+            // 
+            // cboxItens
+            // 
+            cboxItens.FormattingEnabled = true;
+            cboxItens.Location = new Point(64, 21);
+            cboxItens.Name = "cboxItens";
+            cboxItens.Size = new Size(351, 23);
+            cboxItens.TabIndex = 1;
+            
             // 
             // label3
             // 
@@ -77,6 +97,21 @@
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             // 
+            // txtNomeCliente
+            // 
+            txtNomeCliente.Location = new Point(20, 41);
+            txtNomeCliente.Name = "txtNomeCliente";
+            txtNomeCliente.Size = new Size(395, 23);
+            txtNomeCliente.TabIndex = 1;
+            // 
+            // cboxMesas
+            // 
+            cboxMesas.FormattingEnabled = true;
+            cboxMesas.Location = new Point(20, 91);
+            cboxMesas.Name = "cboxMesas";
+            cboxMesas.Size = new Size(395, 23);
+            cboxMesas.TabIndex = 1;
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -96,39 +131,6 @@
             label1.Size = new Size(127, 21);
             label1.TabIndex = 0;
             label1.Text = "Nome do cliente:";
-            // 
-            // txtNomeCliente
-            // 
-            txtNomeCliente.Location = new Point(20, 41);
-            txtNomeCliente.Name = "txtNomeCliente";
-            txtNomeCliente.Size = new Size(395, 23);
-            txtNomeCliente.TabIndex = 1;
-            // 
-            // cboxItens
-            // 
-            cboxItens.FormattingEnabled = true;
-            cboxItens.Location = new Point(64, 21);
-            cboxItens.Name = "cboxItens";
-            cboxItens.Size = new Size(351, 23);
-            cboxItens.TabIndex = 1;
-            // 
-            // btnAddItem
-            // 
-            btnAddItem.BackColor = Color.LightGreen;
-            btnAddItem.Location = new Point(455, 19);
-            btnAddItem.Name = "btnAddItem";
-            btnAddItem.Size = new Size(40, 25);
-            btnAddItem.TabIndex = 2;
-            btnAddItem.Text = "+";
-            btnAddItem.UseVisualStyleBackColor = false;
-            // 
-            // cboxMesas
-            // 
-            cboxMesas.FormattingEnabled = true;
-            cboxMesas.Location = new Point(20, 91);
-            cboxMesas.Name = "cboxMesas";
-            cboxMesas.Size = new Size(395, 23);
-            cboxMesas.TabIndex = 1;
             // 
             // btnConfirmar
             // 
@@ -153,20 +155,20 @@
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // listView1
+            // dataGridView1
             // 
-            listView1.Location = new Point(51, 233);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(639, 139);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(51, 232);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(639, 150);
+            dataGridView1.TabIndex = 2;
             // 
             // FrmComandaCad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(listView1);
+            Controls.Add(dataGridView1);
             Controls.Add(btnCancelar);
             Controls.Add(btnConfirmar);
             Controls.Add(groupBox2);
@@ -179,6 +181,7 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
@@ -195,6 +198,6 @@
         private ComboBox cboxMesas;
         private Button btnConfirmar;
         private Button btnCancelar;
-        private ListView listView1;
+        private DataGridView dataGridView1;
     }
 }

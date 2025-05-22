@@ -138,7 +138,6 @@
             btnExcluir.TabIndex = 5;
             btnExcluir.Text = "X Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
-            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnEditar
             // 
@@ -150,7 +149,7 @@
             btnEditar.TabIndex = 6;
             btnEditar.Text = "# Editar";
             btnEditar.UseVisualStyleBackColor = false;
-            btnEditar.Click += btnEditar_Click;
+     
             // 
             // FrmCardapio
             // 
@@ -181,7 +180,7 @@
         private TextBox txtPesquisar;
         private Button btnAddItemCardapio;
         private GroupBox groupBox1;
-        private DataGridView dataGridView1;
+        public DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

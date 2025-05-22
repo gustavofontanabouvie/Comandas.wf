@@ -31,7 +31,7 @@
             label1 = new Label();
             txtTitulo = new TextBox();
             groupBox1 = new GroupBox();
-            cboxPreparo = new CheckBox();
+            ckboxPreparo = new CheckBox();
             label3 = new Label();
             label2 = new Label();
             txtPreco = new TextBox();
@@ -47,7 +47,7 @@
             label1.Location = new Point(25, 54);
             label1.Name = "label1";
             label1.Size = new Size(38, 15);
-            label1.TabIndex = 0;
+            label1.TabIndex = 4;
             label1.Text = "Título";
             // 
             // txtTitulo
@@ -59,7 +59,7 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(cboxPreparo);
+            groupBox1.Controls.Add(ckboxPreparo);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
@@ -69,18 +69,18 @@
             groupBox1.Location = new Point(67, 30);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(665, 312);
-            groupBox1.TabIndex = 2;
+            groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
-            // cboxPreparo
+            // ckboxPreparo
             // 
-            cboxPreparo.AutoSize = true;
-            cboxPreparo.Location = new Point(25, 241);
-            cboxPreparo.Name = "cboxPreparo";
-            cboxPreparo.Size = new Size(112, 19);
-            cboxPreparo.TabIndex = 2;
-            cboxPreparo.Text = "Possui preparo ?";
-            cboxPreparo.UseVisualStyleBackColor = true;
+            ckboxPreparo.AutoSize = true;
+            ckboxPreparo.Location = new Point(25, 241);
+            ckboxPreparo.Name = "ckboxPreparo";
+            ckboxPreparo.Size = new Size(112, 19);
+            ckboxPreparo.TabIndex = 6;
+            ckboxPreparo.Text = "Possui preparo ?";
+            ckboxPreparo.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -88,7 +88,7 @@
             label3.Location = new Point(25, 175);
             label3.Name = "label3";
             label3.Size = new Size(37, 15);
-            label3.TabIndex = 0;
+            label3.TabIndex = 4;
             label3.Text = "Preço";
             // 
             // label2
@@ -97,7 +97,7 @@
             label2.Location = new Point(25, 111);
             label2.Name = "label2";
             label2.Size = new Size(58, 15);
-            label2.TabIndex = 0;
+            label2.TabIndex = 2;
             label2.Text = "Descrição";
             // 
             // txtPreco
@@ -105,14 +105,14 @@
             txtPreco.Location = new Point(25, 193);
             txtPreco.Name = "txtPreco";
             txtPreco.Size = new Size(156, 23);
-            txtPreco.TabIndex = 1;
+            txtPreco.TabIndex = 5;
             // 
             // txtDescricao
             // 
             txtDescricao.Location = new Point(25, 129);
             txtDescricao.Name = "txtDescricao";
             txtDescricao.Size = new Size(473, 23);
-            txtDescricao.TabIndex = 1;
+            txtDescricao.TabIndex = 3;
             // 
             // btnCancelar
             // 
@@ -121,7 +121,7 @@
             btnCancelar.Location = new Point(411, 397);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(154, 41);
-            btnCancelar.TabIndex = 3;
+            btnCancelar.TabIndex = 1;
             btnCancelar.Text = "X Cancelar";
             btnCancelar.UseVisualStyleBackColor = false;
             btnCancelar.Click += btnCancelar_Click;
@@ -133,9 +133,10 @@
             btnSalvar.Location = new Point(578, 397);
             btnSalvar.Name = "btnSalvar";
             btnSalvar.Size = new Size(154, 41);
-            btnSalvar.TabIndex = 3;
+            btnSalvar.TabIndex = 2;
             btnSalvar.Text = "# Salvar";
             btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // FrmCardapioCad
             // 
@@ -148,7 +149,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmCardapioCad";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -159,7 +159,7 @@
         private Label label1;
         private TextBox txtTitulo;
         private GroupBox groupBox1;
-        private CheckBox cboxPreparo;
+        private CheckBox ckboxPreparo;
         private Label label2;
         private TextBox txtPreco;
         private TextBox txtDescricao;

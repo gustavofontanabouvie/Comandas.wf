@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Comandas.WF
 {
     public partial class FrmCardapio : Form
@@ -15,27 +16,26 @@ namespace Comandas.WF
         public FrmCardapio()
         {
             InitializeComponent();
+            CarregarItens();
         }
-
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             this.Close();
             new FrmPrincipal().Show();
         }
-
         private void btnAddItemCardapio_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             new FrmCardapioCad().Show();
         }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
+        public void CarregarItens()
         {
+            dataGridView1.Rows.Clear();
 
-        }
-        private void btnEditar_Click(object sender, EventArgs e)
-        {
-
+            foreach (var item in ListaDeItensEstatica.Itens)
+            {
+                dataGridView1.Rows.Add(item.Id, item.Titulo, item.Descricao, item.Preco, item.PossuiPreparo);
+            }
         }
     }
 }

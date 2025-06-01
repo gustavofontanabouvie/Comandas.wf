@@ -100,6 +100,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(721, 268);
             dataGridView1.TabIndex = 0;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // Column1
             // 
@@ -138,6 +139,7 @@
             btnExcluir.TabIndex = 5;
             btnExcluir.Text = "X Excluir";
             btnExcluir.UseVisualStyleBackColor = false;
+            btnExcluir.Click += btnExcluir_Click;
             // 
             // btnEditar
             // 
@@ -149,7 +151,7 @@
             btnEditar.TabIndex = 6;
             btnEditar.Text = "# Editar";
             btnEditar.UseVisualStyleBackColor = false;
-     
+            btnEditar.Click += btnEditar_Click;
             // 
             // FrmCardapio
             // 
@@ -167,6 +169,7 @@
             Name = "FrmCardapio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "FrmCardapio";
+            Activated += FrmCardapio_Activated;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

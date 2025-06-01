@@ -10,18 +10,11 @@ using System.Windows.Forms;
 
 namespace Comandas.WF
 {
-    public partial class FrmComandaCad : Form
+    public partial class FrmTelaLogin : Form
     {
-        FrmCardapio _frmCardapio;
-        public FrmComandaCad()
+        public FrmTelaLogin()
         {
             InitializeComponent();
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new FrmComanda().Show();
-        }
-
     }
 }

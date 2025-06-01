@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comandas.WF
+namespace Comandas.WF.ViewModels
 {
-    public class CardapioItem
+    public class CardapioItemModels
+
     {
         public int Id{ get; set; }
 

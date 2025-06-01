@@ -10,18 +10,21 @@ using System.Windows.Forms;
 
 namespace Comandas.WF
 {
-    public partial class FrmComandaCad : Form
+    public partial class FrmPedidosCozinha : Form
     {
-        FrmCardapio _frmCardapio;
-        public FrmComandaCad()
+        public FrmPedidosCozinha()
         {
             InitializeComponent();
         }
-        private void btnCancelar_Click(object sender, EventArgs e)
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.Close();
-            new FrmComanda().Show();
+
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

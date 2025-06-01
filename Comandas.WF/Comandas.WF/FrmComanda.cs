@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Comandas.WF.ViewModels;
 
 namespace Comandas.WF
 {
@@ -33,29 +34,12 @@ namespace Comandas.WF
 
         private void CriarMesas()
         {
-            for (int i = 1; i <= 10; i++)
-            {
-                Mesa mesa = new Mesa();
-                mesa.Numero = i;
-                mesa.Disponivel = true;
-                ListaDeItensEstatica.Mesas.Add(mesa);
-            }
+            
         }
         
         private void PreencherDataGrid()
         {
-            dataGridView1.Rows.Clear();
-            foreach (var mesa in ListaDeItensEstatica.Mesas)
-            {
-                if (mesa.Disponivel)
-                {
-                    dataGridView1.Rows.Add(mesa.Numero, "Disponível");
-                }
-                else
-                {
-                    dataGridView1.Rows.Add(mesa.Numero, "Ocupada");
-                }
-            }
+             
         }
     }
 }

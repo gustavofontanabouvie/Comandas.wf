@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Comandas.WF.ViewModels;
 
 namespace Comandas.WF
 {
-   
     public partial class FrmCardapioCad : Form
     {
-        public FrmCardapioCad()
+        FrmCardapio _frmCardapio;
+        public FrmCardapioCad(FrmCardapio frmCardapio)
         {
+            _frmCardapio = frmCardapio;
             InitializeComponent();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-          new FrmCardapio().Show();
+          _frmCardapio.Show();
             this.Close();
         }
 
@@ -36,13 +38,23 @@ namespace Comandas.WF
             }
             else
             {
+                txtPreco.Clear();
+                txtPreco.Focus();
                 MessageBox.Show("Valor inválido para o preço.");
                 return;
             }
             novoItem.PossuiPreparo = ckboxPreparo.Checked;
-            novoItem.Id = ListaDeItensEstatica.Itens.Count + 1;
 
-            ListaDeItensEstatica.Itens.Add(novoItem);
+            if (_frmCardapio.itens.Count == 0)
+            { novoItem.Id = 1;
+            }
+            else
+            {
+                int maxId = _frmCardapio.itens.Max(item => item.Id);
+                novoItem.Id = maxId + 1;
+            }
+                //ListaDeItensEstatica.Itens.Add(novoItem);
+            _frmCardapio.itens.Add(novoItem);
             LimparCampos();
         }
         private void LimparCampos()

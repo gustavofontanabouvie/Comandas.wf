@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Comandas.WF.Models;
 using Comandas.WF.ViewModels;
 
 namespace Comandas.WF

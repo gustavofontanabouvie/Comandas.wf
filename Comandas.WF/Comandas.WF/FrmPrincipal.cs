@@ -23,5 +23,16 @@ namespace Comandas.WF
             this.Hide();
             new FrmComanda().Show();
         }
+
+        private void btnPedidos_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new FrmPedidosCozinha().Show();
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

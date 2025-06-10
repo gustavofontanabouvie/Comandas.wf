@@ -59,6 +59,7 @@
             btnUsuarios.TabIndex = 0;
             btnUsuarios.Text = "Usuários";
             btnUsuarios.UseVisualStyleBackColor = false;
+            btnUsuarios.Click += btnUsuarios_Click;
             // 
             // btnPedidos
             // 
@@ -70,6 +71,7 @@
             btnPedidos.TabIndex = 0;
             btnPedidos.Text = "Pedido Cozinha";
             btnPedidos.UseVisualStyleBackColor = false;
+            btnPedidos.Click += btnPedidos_Click;
             // 
             // btnComanda
             // 

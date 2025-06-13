@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Comandas.WF.Database;
 using Comandas.WF.Models;
 using Comandas.WF.ViewModels;
 
@@ -14,15 +15,15 @@ namespace Comandas.WF
 {
     public partial class FrmCardapioCad : Form
     {
-        FrmCardapio _frmCardapio;
-        public FrmCardapioCad(FrmCardapio frmCardapio)
+      
+        public FrmCardapioCad()
         {
-            _frmCardapio = frmCardapio;
+            
             InitializeComponent();
         }
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-          _frmCardapio.Show();
+          new FrmCardapio().Show();
             this.Close();
         }
 
@@ -45,17 +46,13 @@ namespace Comandas.WF
                 return;
             }
             novoItem.PossuiPreparo = ckboxPreparo.Checked;
-
-            if (_frmCardapio.itens.Count == 0)
-            { novoItem.Id = 1;
-            }
-            else
+    
+            using (var context = new ComandasDbContext())
             {
-                int maxId = _frmCardapio.itens.Max(item => item.Id);
-                novoItem.Id = maxId + 1;
+                context.Add(novoItem);
+                context.SaveChanges();
             }
-                //ListaDeItensEstatica.Itens.Add(novoItem);
-            _frmCardapio.itens.Add(novoItem);
+
             LimparCampos();
         }
         private void LimparCampos()

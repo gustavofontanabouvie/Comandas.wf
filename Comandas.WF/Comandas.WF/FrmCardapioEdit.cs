@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Comandas.WF.Database;
 
 namespace Comandas.WF
 {
@@ -38,20 +39,16 @@ namespace Comandas.WF
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            int posicaoDoItem = _frmCardapio.itens.FindIndex(index => index.Id == _itemId);
-
-            if(posicaoDoItem >= 0)
+ 
+            using(var context = new ComandasDbContext())
             {
-                _frmCardapio.itens[posicaoDoItem].Titulo = txtTitulo.Text;
-                _frmCardapio.itens[posicaoDoItem].Descricao = txtDescricao.Text;
-                _frmCardapio.itens[posicaoDoItem].Preco = Convert.ToDouble(txtPreco.Text);
-                _frmCardapio.itens[posicaoDoItem].PossuiPreparo = ckboxPreparo.Checked;
+                var cardapioItem = context.CardapioItems.First(ci => ci.Id == _itemId);
+                cardapioItem.Titulo = txtTitulo.Text;
+                cardapioItem.Descricao = txtDescricao.Text;
+                cardapioItem.Preco = Convert.ToDouble(txtPreco.Text);
+                cardapioItem.PossuiPreparo = ckboxPreparo.Checked;
+                context.SaveChanges();
             }
-            else
-            {
-                MessageBox.Show("Item não encontrado.");
-            }
-
             this.Close();
             _frmCardapio.Show();
         }

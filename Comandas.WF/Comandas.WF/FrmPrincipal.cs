@@ -1,3 +1,6 @@
+using Comandas.WF.Database;
+using Microsoft.EntityFrameworkCore;
+
 namespace Comandas.WF
 {
     public partial class FrmPrincipal : Form
@@ -5,6 +8,16 @@ namespace Comandas.WF
         public FrmPrincipal()
         {
             InitializeComponent();
+            InicializarBD();
+        }
+
+        private void InicializarBD()
+        {
+            using(var context = new ComandasDbContext())
+            {
+                context.Database.EnsureCreated();
+                context.Database.Migrate();
+            }
         }
 
         private void btnCardapio_Click(object sender, EventArgs e)

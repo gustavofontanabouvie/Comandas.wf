@@ -9,6 +9,8 @@ namespace Comandas.WF
         {
             InitializeComponent();
             InicializarBD();
+
+            new FrmTelaLogin().ShowDialog();
         }
 
         private void InicializarBD()
@@ -17,8 +19,11 @@ namespace Comandas.WF
             {
                 context.Database.EnsureCreated();
                 context.Database.Migrate();
+
+                InicializarDados.SemearBanco(context);
             }
         }
+
 
         private void btnCardapio_Click(object sender, EventArgs e)
         {
@@ -45,7 +50,8 @@ namespace Comandas.WF
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new FrmUsuarioCad().Show();
         }
     }
 }

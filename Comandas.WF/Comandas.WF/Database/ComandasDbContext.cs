@@ -71,6 +71,8 @@ namespace Comandas.WF.Database
         public DbSet<PedidoCozinhaItem> PedidoCozinhaItems { get; set; }
 
         public DbSet<ComandaItens> ComandaItens { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
+
     }
     
 }

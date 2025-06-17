@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTelaLogin));
             label1 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            cbxUsuario = new ComboBox();
+            txtSenha = new TextBox();
             button1 = new Button();
             groupBox1 = new GroupBox();
-            pictureBox1 = new PictureBox();
             label3 = new Label();
+            pictureBox1 = new PictureBox();
+            button2 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -59,20 +60,20 @@
             label2.TabIndex = 0;
             label2.Text = "Senha";
             // 
-            // comboBox1
+            // cbxUsuario
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(16, 82);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(259, 23);
-            comboBox1.TabIndex = 1;
+            cbxUsuario.FormattingEnabled = true;
+            cbxUsuario.Location = new Point(16, 82);
+            cbxUsuario.Name = "cbxUsuario";
+            cbxUsuario.Size = new Size(259, 23);
+            cbxUsuario.TabIndex = 1;
             // 
-            // textBox1
+            // txtSenha
             // 
-            textBox1.Location = new Point(16, 153);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(259, 23);
-            textBox1.TabIndex = 2;
+            txtSenha.Location = new Point(16, 153);
+            txtSenha.Name = "txtSenha";
+            txtSenha.Size = new Size(259, 23);
+            txtSenha.TabIndex = 2;
             // 
             // button1
             // 
@@ -80,32 +81,24 @@
             button1.Name = "button1";
             button1.Size = new Size(259, 23);
             button1.TabIndex = 3;
-            button1.Text = "button1";
+            button1.Text = "Entrar";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += btnLogin_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(txtSenha);
             groupBox1.Controls.Add(button1);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(comboBox1);
+            groupBox1.Controls.Add(cbxUsuario);
             groupBox1.Location = new Point(205, -4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(293, 287);
+            groupBox1.Size = new Size(295, 287);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(1, 3);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(198, 280);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
             // 
             // label3
             // 
@@ -117,6 +110,27 @@
             label3.TabIndex = 0;
             label3.Text = "Login";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(1, 3);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(198, 280);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 5;
+            pictureBox1.TabStop = false;
+            // 
+            // button2
+            // 
+            button2.BackColor = Color.IndianRed;
+            button2.Location = new Point(262, 10);
+            button2.Name = "button2";
+            button2.Size = new Size(27, 24);
+            button2.TabIndex = 4;
+            button2.Text = "X";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += btnSair_Click;
+            // 
             // FrmTelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -124,6 +138,7 @@
             ClientSize = new Size(501, 284);
             Controls.Add(pictureBox1);
             Controls.Add(groupBox1);
+            FormBorderStyle = FormBorderStyle.None;
             Name = "FrmTelaLogin";
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -136,11 +151,12 @@
 
         private Label label1;
         private Label label2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cbxUsuario;
+        private TextBox txtSenha;
         private Button button1;
         private GroupBox groupBox1;
         private Label label3;
         private PictureBox pictureBox1;
+        private Button button2;
     }
 }

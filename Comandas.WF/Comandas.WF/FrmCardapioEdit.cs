@@ -49,6 +49,7 @@ namespace Comandas.WF
                 cardapioItem.PossuiPreparo = ckboxPreparo.Checked;
                 context.SaveChanges();
             }
+
             this.Close();
             _frmCardapio.Show();
         }

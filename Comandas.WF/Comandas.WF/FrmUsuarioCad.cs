@@ -40,7 +40,6 @@ namespace Comandas.WF
             {
                 if (txtNome.Text == "" || txtEmail.Text == "" || txtSenha.Text == "")
                 {
-
                     MessageBox.Show("Todos os campos devem ser preenchidos");
                 }
                 else

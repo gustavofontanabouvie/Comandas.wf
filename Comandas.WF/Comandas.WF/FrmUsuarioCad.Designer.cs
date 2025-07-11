@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnVoltar = new Button();
             groupBox2 = new GroupBox();
             txtNome = new TextBox();
             txtConfirmaSenha = new TextBox();
@@ -41,25 +40,14 @@
             txtEmail = new TextBox();
             label3 = new Label();
             dataGridView1 = new DataGridView();
-            btnExcluirUsuario = new Button();
-            btnSelecionar = new Button();
             Id = new DataGridViewTextBoxColumn();
             Usuario = new DataGridViewTextBoxColumn();
             Email = new DataGridViewTextBoxColumn();
+            btnExcluirUsuario = new Button();
+            btnEditar = new Button();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = Color.IndianRed;
-            btnVoltar.Location = new Point(652, 3);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(43, 32);
-            btnVoltar.TabIndex = 0;
-            btnVoltar.Text = "X";
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += btnVoltar_Click;
             // 
             // groupBox2
             // 
@@ -73,30 +61,30 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(txtEmail);
             groupBox2.Controls.Add(label3);
-            groupBox2.Location = new Point(351, 38);
+            groupBox2.Location = new Point(351, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(282, 393);
+            groupBox2.Size = new Size(282, 419);
             groupBox2.TabIndex = 5;
             groupBox2.TabStop = false;
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(44, 84);
+            txtNome.Location = new Point(44, 104);
             txtNome.Name = "txtNome";
             txtNome.Size = new Size(195, 23);
-            txtNome.TabIndex = 3;
+            txtNome.TabIndex = 1;
             // 
             // txtConfirmaSenha
             // 
-            txtConfirmaSenha.Location = new Point(44, 268);
+            txtConfirmaSenha.Location = new Point(44, 288);
             txtConfirmaSenha.Name = "txtConfirmaSenha";
             txtConfirmaSenha.Size = new Size(195, 23);
-            txtConfirmaSenha.TabIndex = 3;
+            txtConfirmaSenha.TabIndex = 4;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(44, 250);
+            label5.Location = new Point(44, 270);
             label5.Name = "label5";
             label5.Size = new Size(95, 15);
             label5.TabIndex = 2;
@@ -104,17 +92,17 @@
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Location = new Point(88, 344);
+            btnCadastrar.Location = new Point(91, 377);
             btnCadastrar.Name = "btnCadastrar";
             btnCadastrar.Size = new Size(98, 23);
-            btnCadastrar.TabIndex = 0;
+            btnCadastrar.TabIndex = 5;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
             // txtSenha
             // 
-            txtSenha.Location = new Point(44, 204);
+            txtSenha.Location = new Point(44, 224);
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(195, 23);
             txtSenha.TabIndex = 3;
@@ -122,7 +110,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(88, 19);
+            label1.Location = new Point(89, 32);
             label1.Name = "label1";
             label1.Size = new Size(100, 15);
             label1.TabIndex = 1;
@@ -131,7 +119,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(44, 186);
+            label4.Location = new Point(44, 206);
             label4.Name = "label4";
             label4.Size = new Size(39, 15);
             label4.TabIndex = 2;
@@ -140,7 +128,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(44, 66);
+            label2.Location = new Point(44, 86);
             label2.Name = "label2";
             label2.Size = new Size(99, 15);
             label2.TabIndex = 2;
@@ -148,15 +136,15 @@
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(44, 144);
+            txtEmail.Location = new Point(44, 164);
             txtEmail.Name = "txtEmail";
             txtEmail.Size = new Size(195, 23);
-            txtEmail.TabIndex = 3;
+            txtEmail.TabIndex = 2;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(44, 126);
+            label3.Location = new Point(44, 146);
             label3.Name = "label3";
             label3.Size = new Size(41, 15);
             label3.TabIndex = 2;
@@ -166,30 +154,10 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, Usuario, Email });
-            dataGridView1.Location = new Point(27, 44);
+            dataGridView1.Location = new Point(27, 21);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(279, 311);
-            dataGridView1.TabIndex = 6;
-            // 
-            // btnExcluirUsuario
-            // 
-            btnExcluirUsuario.Location = new Point(65, 382);
-            btnExcluirUsuario.Name = "btnExcluirUsuario";
-            btnExcluirUsuario.Size = new Size(88, 23);
-            btnExcluirUsuario.TabIndex = 7;
-            btnExcluirUsuario.Text = "Excluir";
-            btnExcluirUsuario.UseVisualStyleBackColor = true;
-            btnExcluirUsuario.Click += btnExcluirUsuario_Click;
-            // 
-            // btnSelecionar
-            // 
-            btnSelecionar.Location = new Point(180, 382);
-            btnSelecionar.Name = "btnSelecionar";
-            btnSelecionar.Size = new Size(75, 23);
-            btnSelecionar.TabIndex = 8;
-            btnSelecionar.Text = "Selecionar";
-            btnSelecionar.UseVisualStyleBackColor = true;
-            btnSelecionar.Click += btnSelecionar_Click;
+            dataGridView1.Size = new Size(279, 343);
+            dataGridView1.TabIndex = 8;
             // 
             // Id
             // 
@@ -209,16 +177,35 @@
             Email.HeaderText = "Email";
             Email.Name = "Email";
             // 
+            // btnExcluirUsuario
+            // 
+            btnExcluirUsuario.Location = new Point(65, 391);
+            btnExcluirUsuario.Name = "btnExcluirUsuario";
+            btnExcluirUsuario.Size = new Size(88, 23);
+            btnExcluirUsuario.TabIndex = 6;
+            btnExcluirUsuario.Text = "Excluir";
+            btnExcluirUsuario.UseVisualStyleBackColor = true;
+            btnExcluirUsuario.Click += btnExcluirUsuario_Click;
+            // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(180, 391);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 7;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
+            // 
             // FrmUsuarioCad
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(697, 443);
-            Controls.Add(btnSelecionar);
+            Controls.Add(btnEditar);
             Controls.Add(btnExcluirUsuario);
             Controls.Add(dataGridView1);
             Controls.Add(groupBox2);
-            Controls.Add(btnVoltar);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmUsuarioCad";
             StartPosition = FormStartPosition.CenterScreen;
@@ -230,8 +217,6 @@
         }
 
         #endregion
-
-        private Button btnVoltar;
         private GroupBox groupBox2;
         private TextBox txtNome;
         private TextBox txtConfirmaSenha;
@@ -245,7 +230,7 @@
         private Label label3;
         private DataGridView dataGridView1;
         private Button btnExcluirUsuario;
-        private Button btnSelecionar;
+        private Button btnEditar;
         private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Usuario;
         private DataGridViewTextBoxColumn Email;

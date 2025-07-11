@@ -32,7 +32,6 @@
             txtPesquisarComanda = new TextBox();
             btnEditar = new Button();
             btnEncerrar = new Button();
-            btnCancelar = new Button();
             dataGridView1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -61,7 +60,7 @@
             btnEditar.AllowDrop = true;
             btnEditar.BackColor = Color.LightGreen;
             btnEditar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(142, 393);
+            btnEditar.Location = new Point(258, 393);
             btnEditar.Name = "btnEditar";
             btnEditar.Size = new Size(123, 36);
             btnEditar.TabIndex = 0;
@@ -72,24 +71,12 @@
             // 
             btnEncerrar.BackColor = SystemColors.ActiveCaption;
             btnEncerrar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEncerrar.Location = new Point(338, 393);
+            btnEncerrar.Location = new Point(387, 393);
             btnEncerrar.Name = "btnEncerrar";
             btnEncerrar.Size = new Size(130, 36);
             btnEncerrar.TabIndex = 0;
             btnEncerrar.Text = "@ Encerrar";
             btnEncerrar.UseVisualStyleBackColor = false;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.Tomato;
-            btnCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnCancelar.Location = new Point(537, 393);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(123, 36);
-            btnCancelar.TabIndex = 0;
-            btnCancelar.Text = "X Cancelar";
-            btnCancelar.UseVisualStyleBackColor = false;
-            btnCancelar.Click += btnCancelar_Click;
             // 
             // dataGridView1
             // 
@@ -117,7 +104,6 @@
             ClientSize = new Size(800, 457);
             Controls.Add(dataGridView1);
             Controls.Add(txtPesquisarComanda);
-            Controls.Add(btnCancelar);
             Controls.Add(btnEncerrar);
             Controls.Add(btnEditar);
             Controls.Add(btnAddComanda);
@@ -135,7 +121,6 @@
         private TextBox txtPesquisarComanda;
         private Button btnEditar;
         private Button btnEncerrar;
-        private Button btnCancelar;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;

@@ -15,17 +15,13 @@ namespace Comandas.WF
 {
     public partial class FrmUsuarioCad : Form
     {
+        public int idAtual;
         public FrmUsuarioCad()
         {
             InitializeComponent();
             CarregarItens();
         }
 
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new FrmPrincipal().Show();
-        }
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             Usuario user = new Usuario();
@@ -33,10 +29,7 @@ namespace Comandas.WF
             user.Nome = txtNome.Text;
             user.Email = txtEmail.Text;
 
-            string senhaTemporaria = txtSenha.Text;
-            string confirmaSenha = txtConfirmaSenha.Text;
-
-            if (senhaTemporaria.Equals(confirmaSenha))
+            if (txtSenha.Text.Equals(txtConfirmaSenha.Text))
             {
                 if (txtNome.Text == "" || txtEmail.Text == "" || txtSenha.Text == "")
                 {
@@ -44,13 +37,14 @@ namespace Comandas.WF
                 }
                 else
                 {
-                    user.Senha = senhaTemporaria;
+                    user.Senha = txtSenha.Text;
 
                     using (var context = new ComandasDbContext())
                     {
-                        var usuarioExistente = context.Usuarios.FirstOrDefault(u => u.Email == user.Email);
+                        //Select * From Usuario Where id = ?
+                        var usuarioExistente = context.Usuarios.FirstOrDefault(u => u.Id == idAtual);
 
-                        if(usuarioExistente != null)
+                        if (usuarioExistente != null)
                         {
                             usuarioExistente.Nome = user.Nome;
                             usuarioExistente.Email = user.Email;
@@ -113,13 +107,16 @@ namespace Comandas.WF
             }
         }
 
-        private void btnSelecionar_Click(object sender, EventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
             int rowIndex = dataGridView1.CurrentCell.RowIndex;
             int userId = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
 
+
+            int.TryParse(dataGridView1.CurrentRow.Cells[0].Value.ToString(), out idAtual);
             txtNome.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             txtEmail.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
         }
     }
 }

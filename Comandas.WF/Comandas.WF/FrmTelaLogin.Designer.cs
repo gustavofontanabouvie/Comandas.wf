@@ -35,9 +35,9 @@
             txtSenha = new TextBox();
             button1 = new Button();
             groupBox1 = new GroupBox();
+            button2 = new Button();
             label3 = new Label();
             pictureBox1 = new PictureBox();
-            button2 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -100,6 +100,17 @@
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             // 
+            // button2
+            // 
+            button2.BackColor = Color.IndianRed;
+            button2.Location = new Point(262, 10);
+            button2.Name = "button2";
+            button2.Size = new Size(27, 24);
+            button2.TabIndex = 4;
+            button2.Text = "X";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += btnSair_Click;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -120,17 +131,6 @@
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
             // 
-            // button2
-            // 
-            button2.BackColor = Color.IndianRed;
-            button2.Location = new Point(262, 10);
-            button2.Name = "button2";
-            button2.Size = new Size(27, 24);
-            button2.TabIndex = 4;
-            button2.Text = "X";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += btnSair_Click;
-            // 
             // FrmTelaLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -140,6 +140,7 @@
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmTelaLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

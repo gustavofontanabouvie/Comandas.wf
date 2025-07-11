@@ -20,12 +20,6 @@ namespace Comandas.WF
             CriarMesas();
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new FrmPrincipal().Show();
-        }
-
         private void btnAddComanda_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -34,12 +28,12 @@ namespace Comandas.WF
 
         private void CriarMesas()
         {
-            
+
         }
-        
+
         private void PreencherDataGrid()
         {
-             
+
         }
     }
 }

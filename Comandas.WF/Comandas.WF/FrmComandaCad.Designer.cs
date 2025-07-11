@@ -30,7 +30,7 @@
         {
             groupBox1 = new GroupBox();
             btnAddItem = new Button();
-            cboxItens = new ComboBox();
+            cbxItens = new ComboBox();
             label3 = new Label();
             groupBox2 = new GroupBox();
             txtNomeCliente = new TextBox();
@@ -40,6 +40,10 @@
             btnConfirmar = new Button();
             btnCancelar = new Button();
             dataGridView1 = new DataGridView();
+            titulo = new DataGridViewTextBoxColumn();
+            descricao = new DataGridViewTextBoxColumn();
+            preco = new DataGridViewTextBoxColumn();
+            quantidade = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -48,7 +52,7 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(btnAddItem);
-            groupBox1.Controls.Add(cboxItens);
+            groupBox1.Controls.Add(cbxItens);
             groupBox1.Controls.Add(label3);
             groupBox1.Location = new Point(51, 159);
             groupBox1.Name = "groupBox1";
@@ -65,15 +69,15 @@
             btnAddItem.TabIndex = 2;
             btnAddItem.Text = "+";
             btnAddItem.UseVisualStyleBackColor = false;
+            btnAddItem.Click += btnAddItem_Click;
             // 
-            // cboxItens
+            // cbxItens
             // 
-            cboxItens.FormattingEnabled = true;
-            cboxItens.Location = new Point(64, 21);
-            cboxItens.Name = "cboxItens";
-            cboxItens.Size = new Size(351, 23);
-            cboxItens.TabIndex = 1;
-            
+            cbxItens.FormattingEnabled = true;
+            cbxItens.Location = new Point(64, 21);
+            cbxItens.Name = "cbxItens";
+            cbxItens.Size = new Size(351, 23);
+            cbxItens.TabIndex = 1;
             // 
             // label3
             // 
@@ -158,10 +162,35 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { titulo, descricao, preco, quantidade });
             dataGridView1.Location = new Point(51, 232);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(639, 150);
             dataGridView1.TabIndex = 2;
+            // 
+            // titulo
+            // 
+            titulo.HeaderText = "Titulo";
+            titulo.Name = "titulo";
+            titulo.ReadOnly = true;
+            // 
+            // descricao
+            // 
+            descricao.HeaderText = "Descrição";
+            descricao.Name = "descricao";
+            descricao.ReadOnly = true;
+            // 
+            // preco
+            // 
+            preco.HeaderText = "Preço";
+            preco.Name = "preco";
+            preco.ReadOnly = true;
+            // 
+            // quantidade
+            // 
+            quantidade.HeaderText = "Quantidade";
+            quantidade.Name = "quantidade";
+            quantidade.ReadOnly = true;
             // 
             // FrmComandaCad
             // 
@@ -193,11 +222,15 @@
         private Label label2;
         private Label label1;
         private Button btnAddItem;
-        private ComboBox cboxItens;
+        private ComboBox cbxItens;
         private TextBox txtNomeCliente;
         private ComboBox cboxMesas;
         private Button btnConfirmar;
         private Button btnCancelar;
         private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn titulo;
+        private DataGridViewTextBoxColumn descricao;
+        private DataGridViewTextBoxColumn preco;
+        private DataGridViewTextBoxColumn quantidade;
     }
 }

@@ -24,11 +24,6 @@ namespace Comandas.WF
             InitializeComponent();
             CarregarItens();
         }
-        private void btnVoltar_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmPrincipal().Show();
-        }
         private void btnAddItemCardapio_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,14 +33,14 @@ namespace Comandas.WF
         {
             dataGridView1.Rows.Clear();
 
-            using (var context = new ComandasDbContext())  
+            using (var context = new ComandasDbContext())
 
-            foreach (var item in context.CardapioItems)
+                foreach (var item in context.CardapioItems)
                 {
                     dataGridView1.Rows.Add(item.Id, item.Titulo, item.Descricao, item.Preco, item.PossuiPreparo);
                 }
-            }
-        
+        }
+
         private void FrmCardapio_Activated(object sender, EventArgs e)
         {
             CarregarItens();
@@ -64,7 +59,7 @@ namespace Comandas.WF
         {
             int rowIndex = dataGridView1.CurrentCell.RowIndex;
             int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
-            
+
             using (var context = new ComandasDbContext())
             {
                 var cardapio = context.CardapioItems.FirstOrDefault(ci => ci.Id == id);

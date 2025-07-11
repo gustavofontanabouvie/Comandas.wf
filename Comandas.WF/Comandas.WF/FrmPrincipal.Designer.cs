@@ -30,6 +30,7 @@
         {
             groupBox1 = new GroupBox();
             btnUsuarios = new Button();
+            btnMesa = new Button();
             btnPedidos = new Button();
             btnComanda = new Button();
             btnCardapio = new Button();
@@ -40,12 +41,13 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(btnUsuarios);
+            groupBox1.Controls.Add(btnMesa);
             groupBox1.Controls.Add(btnPedidos);
             groupBox1.Controls.Add(btnComanda);
             groupBox1.Controls.Add(btnCardapio);
-            groupBox1.Location = new Point(109, 110);
+            groupBox1.Location = new Point(55, 97);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(600, 267);
+            groupBox1.Size = new Size(738, 267);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             // 
@@ -60,6 +62,18 @@
             btnUsuarios.Text = "Usuários";
             btnUsuarios.UseVisualStyleBackColor = false;
             btnUsuarios.Click += btnUsuarios_Click;
+            // 
+            // btnMesa
+            // 
+            btnMesa.BackColor = SystemColors.GradientActiveCaption;
+            btnMesa.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMesa.Location = new Point(585, 61);
+            btnMesa.Name = "btnMesa";
+            btnMesa.Size = new Size(134, 123);
+            btnMesa.TabIndex = 0;
+            btnMesa.Text = "Mesa";
+            btnMesa.UseVisualStyleBackColor = false;
+            btnMesa.Click += btnMesa_Click;
             // 
             // btnPedidos
             // 
@@ -101,7 +115,7 @@
             // 
             btnFechar.BackColor = Color.Salmon;
             btnFechar.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnFechar.Location = new Point(752, 3);
+            btnFechar.Location = new Point(802, 1);
             btnFechar.Name = "btnFechar";
             btnFechar.Size = new Size(47, 44);
             btnFechar.TabIndex = 1;
@@ -113,7 +127,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(851, 450);
             Controls.Add(btnFechar);
             Controls.Add(groupBox1);
             FormBorderStyle = FormBorderStyle.None;
@@ -132,5 +146,6 @@
         private Button btnPedidos;
         private Button btnComanda;
         private Button btnFechar;
+        private Button btnMesa;
     }
 }

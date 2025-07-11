@@ -1,19 +1,30 @@
 using Comandas.WF.Database;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using Microsoft.EntityFrameworkCore;
 
 namespace Comandas.WF
 {
-    public partial class FrmPrincipal : Form
+    public partial class FrmPrincipalMenu : MaterialForm
     {
-        public FrmPrincipal()
+        public FrmPrincipalMenu()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue900, Primary.Blue900, Accent.Blue700, TextShade.WHITE);
             InicializarBD();
-            new FrmPrincipalMenu().ShowDialog();
-            //new FrmTelaLogin().ShowDialog();
+            AbrirFormNaAba(new FrmCardapio(), tabPgCardapio);
+            AbrirFormNaAba(new FrmComanda(), tabPgComanda);
+            AbrirFormNaAba(new FrmPedidosCozinha(), tabPgPedidoCozinha);
+            AbrirFormNaAba(new FrmUsuarioCad(), tabPgUsuarios);
+            AbrirFormNaAba(new FrmMesaCad(), tabPgMesa);
+
+            new FrmTelaLogin().ShowDialog();
         }
 
-        public FrmPrincipal(bool usuarioAutenticado)
+        public FrmPrincipalMenu(bool usuarioAutenticado)
         {
             InitializeComponent();
         }
@@ -63,6 +74,16 @@ namespace Comandas.WF
         {
             this.Hide();
             new FrmMesaCad().Show();
+        }
+
+        private void AbrirFormNaAba(Form frm, TabPage tabPage)
+        {
+            frm.TopLevel = false;
+            frm.FormBorderStyle = FormBorderStyle.None;
+            frm.Dock = DockStyle.Fill;
+            tabPage.Controls.Clear();
+            tabPage.Controls.Add(frm);
+            frm.Show();
         }
     }
 }

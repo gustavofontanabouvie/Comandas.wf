@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            btnVoltar = new Button();
             txtPesquisar = new TextBox();
             btnAddItemCardapio = new Button();
             groupBox1 = new GroupBox();
@@ -53,17 +52,6 @@
             label1.Size = new Size(60, 15);
             label1.TabIndex = 0;
             label1.Text = "Pesquisar:";
-            // 
-            // btnVoltar
-            // 
-            btnVoltar.BackColor = Color.Salmon;
-            btnVoltar.Location = new Point(751, 1);
-            btnVoltar.Name = "btnVoltar";
-            btnVoltar.Size = new Size(46, 38);
-            btnVoltar.TabIndex = 1;
-            btnVoltar.Text = "X";
-            btnVoltar.UseVisualStyleBackColor = false;
-            btnVoltar.Click += btnVoltar_Click;
             // 
             // txtPesquisar
             // 
@@ -164,7 +152,6 @@
             Controls.Add(groupBox1);
             Controls.Add(btnAddItemCardapio);
             Controls.Add(txtPesquisar);
-            Controls.Add(btnVoltar);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmCardapio";
@@ -180,7 +167,6 @@
         #endregion
 
         private Label label1;
-        private Button btnVoltar;
         private TextBox txtPesquisar;
         private Button btnAddItemCardapio;
         private GroupBox groupBox1;

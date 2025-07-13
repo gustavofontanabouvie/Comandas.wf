@@ -22,11 +22,14 @@ namespace Comandas.WF
 
         private void btnAddComanda_Click(object sender, EventArgs e)
         {
-            this.Close();
             new FrmComandaCad().Show();
         }
 
         private void CriarMesas()
+        {
+
+        }
+        private void btnEncerrar_Click(object sender, EventArgs e)
         {
 
         }
@@ -35,5 +38,6 @@ namespace Comandas.WF
         {
 
         }
+
     }
 }

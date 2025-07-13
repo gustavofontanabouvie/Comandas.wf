@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using Comandas.WF.Database;
 using Comandas.WF.Models;
 using Comandas.WF.ViewModels;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 
 namespace Comandas.WF
@@ -24,11 +26,7 @@ namespace Comandas.WF
             InitializeComponent();
             CarregarItens();
         }
-        private void btnAddItemCardapio_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmCardapioCad().Show();
-        }
+
         public void CarregarItens()
         {
             dataGridView1.Rows.Clear();
@@ -46,13 +44,9 @@ namespace Comandas.WF
             CarregarItens();
         }
 
-        private void btnEditar_Click(object sender, EventArgs e)
+        private void btnAddItemCardapio_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            int rowIndex = dataGridView1.CurrentCell.RowIndex;
-            int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
-            new FrmCardapioEdit(this, id).Show();
-
+            new FrmCardapioCad().Show();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -69,15 +63,11 @@ namespace Comandas.WF
             CarregarItens();
         }
 
-        public void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void btnEditar_Click(object sender, EventArgs e)
         {
-            //int i = e.RowIndex;
-            //linhaSelecionada = dataGridView1.Rows[i];
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
+            int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
+            new FrmCardapioEdit(this, id).Show();
         }
     }
 }

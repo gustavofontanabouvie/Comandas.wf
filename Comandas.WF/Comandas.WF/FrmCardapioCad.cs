@@ -10,20 +10,27 @@ using System.Windows.Forms;
 using Comandas.WF.Database;
 using Comandas.WF.Models;
 using Comandas.WF.ViewModels;
+using MaterialSkin.Controls;
 
 namespace Comandas.WF
 {
-    public partial class FrmCardapioCad : Form
+    public partial class FrmCardapioCad : MaterialForm
     {
-      
         public FrmCardapioCad()
         {
-            
             InitializeComponent();
         }
+
+        private void LimparCampos()
+        {
+            txtTitulo.Clear();
+            txtDescricao.Clear();
+            txtPreco.Clear();
+            ckboxPreparo.Checked = false;
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-          new FrmCardapio().Show();
             this.Close();
         }
 
@@ -46,7 +53,7 @@ namespace Comandas.WF
                 return;
             }
             novoItem.PossuiPreparo = ckboxPreparo.Checked;
-    
+
             using (var context = new ComandasDbContext())
             {
                 context.Add(novoItem);
@@ -55,13 +62,5 @@ namespace Comandas.WF
 
             LimparCampos();
         }
-        private void LimparCampos()
-        {
-            txtTitulo.Clear();
-            txtDescricao.Clear();
-            txtPreco.Clear();
-            ckboxPreparo.Checked = false;
-        }
-       
     }
 }

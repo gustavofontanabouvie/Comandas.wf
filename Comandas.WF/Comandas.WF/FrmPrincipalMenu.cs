@@ -7,6 +7,7 @@ namespace Comandas.WF
 {
     public partial class FrmPrincipalMenu : MaterialForm
     {
+
         public FrmPrincipalMenu()
         {
             InitializeComponent();
@@ -15,6 +16,7 @@ namespace Comandas.WF
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue900, Primary.Blue900, Accent.Blue700, TextShade.WHITE);
             InicializarBD();
+
             AbrirFormNaAba(new FrmCardapio(), tabPgCardapio);
             AbrirFormNaAba(new FrmComanda(), tabPgComanda);
             AbrirFormNaAba(new FrmPedidosCozinha(), tabPgPedidoCozinha);
@@ -40,44 +42,13 @@ namespace Comandas.WF
             }
         }
 
-
-        private void btnCardapio_Click(object sender, EventArgs e)
+        public void AbrirFormNaAba(Form frm, TabPage tabPage)
         {
-            this.Hide();
-            new FrmCardapio().Show();
-        }
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue900, Primary.Blue900, Accent.Blue700, TextShade.WHITE);
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void btnComanda_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmComanda().Show();
-        }
-
-        private void btnPedidos_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmPedidosCozinha().Show();
-        }
-
-        private void btnUsuarios_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmUsuarioCad().Show();
-        }
-
-        private void btnMesa_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            new FrmMesaCad().Show();
-        }
-
-        private void AbrirFormNaAba(Form frm, TabPage tabPage)
-        {
             frm.TopLevel = false;
             frm.FormBorderStyle = FormBorderStyle.None;
             frm.Dock = DockStyle.Fill;

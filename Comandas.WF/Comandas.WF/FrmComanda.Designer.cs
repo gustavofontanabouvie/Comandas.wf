@@ -28,61 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnAddComanda = new Button();
-            txtPesquisarComanda = new TextBox();
-            btnEditar = new Button();
-            btnEncerrar = new Button();
             dataGridView1 = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
+            btnEncerrar = new MaterialSkin.Controls.MaterialButton();
+            btnEditar = new MaterialSkin.Controls.MaterialButton();
+            btnAddComanda = new MaterialSkin.Controls.MaterialButton();
+            txtPesquisarComanda = new MaterialSkin.Controls.MaterialTextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // btnAddComanda
-            // 
-            btnAddComanda.Location = new Point(75, 12);
-            btnAddComanda.Name = "btnAddComanda";
-            btnAddComanda.Size = new Size(123, 23);
-            btnAddComanda.TabIndex = 0;
-            btnAddComanda.Text = "+ Comanda";
-            btnAddComanda.UseVisualStyleBackColor = true;
-            btnAddComanda.Click += btnAddComanda_Click;
-            // 
-            // txtPesquisarComanda
-            // 
-            txtPesquisarComanda.Location = new Point(75, 50);
-            txtPesquisarComanda.Name = "txtPesquisarComanda";
-            txtPesquisarComanda.Size = new Size(638, 23);
-            txtPesquisarComanda.TabIndex = 1;
-            // 
-            // btnEditar
-            // 
-            btnEditar.AllowDrop = true;
-            btnEditar.BackColor = Color.LightGreen;
-            btnEditar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEditar.Location = new Point(258, 393);
-            btnEditar.Name = "btnEditar";
-            btnEditar.Size = new Size(123, 36);
-            btnEditar.TabIndex = 0;
-            btnEditar.Text = "# Editar";
-            btnEditar.UseVisualStyleBackColor = false;
-            // 
-            // btnEncerrar
-            // 
-            btnEncerrar.BackColor = SystemColors.ActiveCaption;
-            btnEncerrar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnEncerrar.Location = new Point(387, 393);
-            btnEncerrar.Name = "btnEncerrar";
-            btnEncerrar.Size = new Size(130, 36);
-            btnEncerrar.TabIndex = 0;
-            btnEncerrar.Text = "@ Encerrar";
-            btnEncerrar.UseVisualStyleBackColor = false;
-            // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.BackgroundColor = SystemColors.ControlLight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
-            dataGridView1.Location = new Point(75, 102);
+            dataGridView1.Location = new Point(75, 111);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(638, 275);
             dataGridView1.TabIndex = 2;
@@ -97,16 +59,92 @@
             Column2.HeaderText = "Cliente";
             Column2.Name = "Column2";
             // 
+            // btnEncerrar
+            // 
+            btnEncerrar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEncerrar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnEncerrar.Depth = 0;
+            btnEncerrar.HighEmphasis = true;
+            btnEncerrar.Icon = null;
+            btnEncerrar.Location = new Point(380, 406);
+            btnEncerrar.Margin = new Padding(4, 6, 4, 6);
+            btnEncerrar.MouseState = MaterialSkin.MouseState.HOVER;
+            btnEncerrar.Name = "btnEncerrar";
+            btnEncerrar.NoAccentTextColor = Color.Empty;
+            btnEncerrar.Size = new Size(112, 36);
+            btnEncerrar.TabIndex = 3;
+            btnEncerrar.Text = "@ Encerrar";
+            btnEncerrar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnEncerrar.UseAccentColor = false;
+            btnEncerrar.UseVisualStyleBackColor = true;
+            // 
+            // btnEditar
+            // 
+            btnEditar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnEditar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnEditar.Depth = 0;
+            btnEditar.HighEmphasis = true;
+            btnEditar.Icon = null;
+            btnEditar.Location = new Point(277, 406);
+            btnEditar.Margin = new Padding(4, 6, 4, 6);
+            btnEditar.MouseState = MaterialSkin.MouseState.HOVER;
+            btnEditar.Name = "btnEditar";
+            btnEditar.NoAccentTextColor = Color.Empty;
+            btnEditar.Size = new Size(84, 36);
+            btnEditar.TabIndex = 4;
+            btnEditar.Text = "# Editar";
+            btnEditar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnEditar.UseAccentColor = false;
+            btnEditar.UseVisualStyleBackColor = true;
+            // 
+            // btnAddComanda
+            // 
+            btnAddComanda.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAddComanda.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAddComanda.Depth = 0;
+            btnAddComanda.HighEmphasis = true;
+            btnAddComanda.Icon = null;
+            btnAddComanda.Location = new Point(75, 11);
+            btnAddComanda.Margin = new Padding(4, 6, 4, 6);
+            btnAddComanda.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAddComanda.Name = "btnAddComanda";
+            btnAddComanda.NoAccentTextColor = Color.Empty;
+            btnAddComanda.Size = new Size(106, 36);
+            btnAddComanda.TabIndex = 5;
+            btnAddComanda.Text = "+ Comanda";
+            btnAddComanda.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAddComanda.UseAccentColor = false;
+            btnAddComanda.UseVisualStyleBackColor = true;
+            btnAddComanda.Click += btnAddComanda_Click;
+            // 
+            // txtPesquisarComanda
+            // 
+            txtPesquisarComanda.AnimateReadOnly = false;
+            txtPesquisarComanda.BorderStyle = BorderStyle.None;
+            txtPesquisarComanda.Depth = 0;
+            txtPesquisarComanda.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtPesquisarComanda.LeadingIcon = null;
+            txtPesquisarComanda.Location = new Point(75, 70);
+            txtPesquisarComanda.MaximumSize = new Size(900, 25);
+            txtPesquisarComanda.MaxLength = 50;
+            txtPesquisarComanda.MouseState = MaterialSkin.MouseState.OUT;
+            txtPesquisarComanda.Multiline = false;
+            txtPesquisarComanda.Name = "txtPesquisarComanda";
+            txtPesquisarComanda.Size = new Size(638, 25);
+            txtPesquisarComanda.TabIndex = 6;
+            txtPesquisarComanda.Text = "";
+            txtPesquisarComanda.TrailingIcon = null;
+            // 
             // FrmComanda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 457);
-            Controls.Add(dataGridView1);
             Controls.Add(txtPesquisarComanda);
-            Controls.Add(btnEncerrar);
-            Controls.Add(btnEditar);
             Controls.Add(btnAddComanda);
+            Controls.Add(btnEditar);
+            Controls.Add(btnEncerrar);
+            Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmComanda";
             StartPosition = FormStartPosition.CenterScreen;
@@ -116,13 +154,12 @@
         }
 
         #endregion
-
-        private Button btnAddComanda;
-        private TextBox txtPesquisarComanda;
-        private Button btnEditar;
-        private Button btnEncerrar;
         private DataGridView dataGridView1;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
+        private MaterialSkin.Controls.MaterialButton btnEncerrar;
+        private MaterialSkin.Controls.MaterialButton btnEditar;
+        private MaterialSkin.Controls.MaterialButton btnAddComanda;
+        private MaterialSkin.Controls.MaterialTextBox txtPesquisarComanda;
     }
 }

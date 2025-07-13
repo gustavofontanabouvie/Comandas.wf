@@ -19,13 +19,16 @@ namespace Comandas.WF
         {
             InitializeComponent();
             cbxItens.DataSource = ListarItens();
-        }
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            new FrmComanda().Show();
+            cboxMesas.DataSource = ListarMesas();
         }
 
+        private List<int> ListarMesas()
+        {
+            using (var context = new ComandasDbContext())
+            {
+                return context.Mesas.ToList().Select(me => me.Numero).ToList();
+            }
+        }
         private List<String> ListarItens()
         {
             using (var context = new ComandasDbContext())
@@ -36,7 +39,6 @@ namespace Comandas.WF
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-
 
             using (var context = new ComandasDbContext())
             {
@@ -65,6 +67,14 @@ namespace Comandas.WF
             }
         }
 
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Confirmar");
+        }
     }
 }

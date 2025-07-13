@@ -22,6 +22,43 @@ namespace Comandas.WF
             CarregarItens();
         }
 
+        private void LimparCampos()
+        {
+            txtNome.Clear();
+            txtEmail.Clear();
+            txtSenha.Clear();
+            txtConfirmaSenha.Clear();
+        }
+
+        public void CarregarItens()
+        {
+            dataGridView1.Rows.Clear();
+
+            using (var context = new ComandasDbContext())
+            {
+                foreach (var user in context.Usuarios)
+                {
+                    dataGridView1.Rows.Add(user.Id, user.Nome, user.Email);
+                }
+
+            }
+        }
+
+        private void btnExcluirUsuario_Click(object sender, EventArgs e)
+        {
+            int rowIndex = dataGridView1.CurrentCell.RowIndex;
+            int userId = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
+
+            using (var context = new ComandasDbContext())
+            {
+                var user = context.Usuarios.FirstOrDefault(u => u.Id == userId);
+                context.Usuarios.Remove(user!);
+
+                context.SaveChanges();
+            }
+            CarregarItens();
+        }
+
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
             Usuario user = new Usuario();
@@ -70,42 +107,6 @@ namespace Comandas.WF
                 MessageBox.Show("Campo confirmar senha deve ser igual ao campo senha");
             }
         }
-        private void LimparCampos()
-        {
-            txtNome.Clear();
-            txtEmail.Clear();
-            txtSenha.Clear();
-            txtConfirmaSenha.Clear();
-        }
-
-        private void btnExcluirUsuario_Click(object sender, EventArgs e)
-        {
-            int rowIndex = dataGridView1.CurrentCell.RowIndex;
-            int userId = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
-
-            using (var context = new ComandasDbContext())
-            {
-                var user = context.Usuarios.FirstOrDefault(u => u.Id == userId);
-                context.Usuarios.Remove(user!);
-
-                context.SaveChanges();
-            }
-            CarregarItens();
-        }
-
-        public void CarregarItens()
-        {
-            dataGridView1.Rows.Clear();
-
-            using (var context = new ComandasDbContext())
-            {
-                foreach (var user in context.Usuarios)
-                {
-                    dataGridView1.Rows.Add(user.Id, user.Nome, user.Email);
-                }
-
-            }
-        }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -116,7 +117,6 @@ namespace Comandas.WF
             int.TryParse(dataGridView1.CurrentRow.Cells[0].Value.ToString(), out idAtual);
             txtNome.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             txtEmail.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-
         }
     }
 }

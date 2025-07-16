@@ -28,36 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
+            dataGridViewComandas = new DataGridView();
             btnEncerrar = new MaterialSkin.Controls.MaterialButton();
             btnEditar = new MaterialSkin.Controls.MaterialButton();
             btnAddComanda = new MaterialSkin.Controls.MaterialButton();
             txtPesquisarComanda = new MaterialSkin.Controls.MaterialTextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Id = new DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewComandas).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewComandas
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.ControlLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2 });
-            dataGridView1.Location = new Point(75, 111);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(638, 275);
-            dataGridView1.TabIndex = 2;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Mesa";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Cliente";
-            Column2.Name = "Column2";
+            dataGridViewComandas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewComandas.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewComandas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewComandas.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Id });
+            dataGridViewComandas.Location = new Point(75, 111);
+            dataGridViewComandas.Name = "dataGridViewComandas";
+            dataGridViewComandas.Size = new Size(638, 275);
+            dataGridViewComandas.TabIndex = 2;
             // 
             // btnEncerrar
             // 
@@ -77,6 +68,7 @@
             btnEncerrar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnEncerrar.UseAccentColor = false;
             btnEncerrar.UseVisualStyleBackColor = true;
+            btnEncerrar.Click += btnEncerrar_Click;
             // 
             // btnEditar
             // 
@@ -135,6 +127,22 @@
             txtPesquisarComanda.Text = "";
             txtPesquisarComanda.TrailingIcon = null;
             // 
+            // Column1
+            // 
+            Column1.HeaderText = "Mesa";
+            Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            Column2.HeaderText = "Cliente";
+            Column2.Name = "Column2";
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Column3";
+            Id.Name = "Id";
+            Id.Visible = false;
+            // 
             // FrmComanda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -144,22 +152,23 @@
             Controls.Add(btnAddComanda);
             Controls.Add(btnEditar);
             Controls.Add(btnEncerrar);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewComandas);
             FormBorderStyle = FormBorderStyle.None;
             Name = "FrmComanda";
             StartPosition = FormStartPosition.CenterScreen;
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewComandas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
+        private DataGridView dataGridViewComandas;
         private MaterialSkin.Controls.MaterialButton btnEncerrar;
         private MaterialSkin.Controls.MaterialButton btnEditar;
         private MaterialSkin.Controls.MaterialButton btnAddComanda;
         private MaterialSkin.Controls.MaterialTextBox txtPesquisarComanda;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Id;
     }
 }

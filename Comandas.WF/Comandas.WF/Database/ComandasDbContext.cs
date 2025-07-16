@@ -13,7 +13,7 @@ namespace Comandas.WF.Database
     {
         public ComandasDbContext() : base()
         {
- 
+
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,7 +26,7 @@ namespace Comandas.WF.Database
                 .HasMany<ComandaItens>()
                     .WithOne(ci => ci.Comanda)
                 .HasForeignKey(ci => ci.ComandaId)
-                .OnDelete(DeleteBehavior.NoAction);
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ComandaItens>()
                 .HasOne(ci => ci.Comanda)
@@ -63,7 +63,7 @@ namespace Comandas.WF.Database
 
         public DbSet<CardapioItem> CardapioItems { get; set; }
         public DbSet<PedidoCozinha> PedidosCozinha { get; set; }
-        
+
         public DbSet<Comanda> Comandas { get; set; }
 
         public DbSet<Mesa> Mesas { get; set; }
@@ -74,5 +74,5 @@ namespace Comandas.WF.Database
         public DbSet<Usuario> Usuarios { get; set; }
 
     }
-    
+
 }

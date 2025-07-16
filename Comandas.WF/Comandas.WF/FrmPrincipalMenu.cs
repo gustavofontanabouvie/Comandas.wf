@@ -17,8 +17,8 @@ namespace Comandas.WF
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Blue900, Primary.Blue900, Primary.Blue900, Accent.Blue700, TextShade.WHITE);
             InicializarBD();
 
-            AbrirFormNaAba(new FrmCardapio(), tabPgCardapio);
-            AbrirFormNaAba(new FrmComanda(), tabPgComanda);
+            AbrirFormNaAba(new FrmCardapio().ReceberFormPrincipal(this), tabPgCardapio);
+            AbrirFormNaAba(new FrmComanda().ReceberFormPrincipal(this), tabPgComanda);
             AbrirFormNaAba(new FrmPedidosCozinha(), tabPgPedidoCozinha);
             AbrirFormNaAba(new FrmUsuarioCad(), tabPgUsuarios);
             AbrirFormNaAba(new FrmMesaCad(), tabPgMesa);

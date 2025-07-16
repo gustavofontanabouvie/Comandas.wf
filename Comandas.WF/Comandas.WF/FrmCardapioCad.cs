@@ -16,6 +16,8 @@ namespace Comandas.WF
 {
     public partial class FrmCardapioCad : MaterialForm
     {
+        public FrmPrincipalMenu frmMenu;
+
         public FrmCardapioCad()
         {
             InitializeComponent();
@@ -28,10 +30,17 @@ namespace Comandas.WF
             txtPreco.Clear();
             ckboxPreparo.Checked = false;
         }
+        public FrmCardapioCad ReceberFormPrincipal(FrmPrincipalMenu frm)
+        {
+            frmMenu = frm;
+            return this;
+        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+
+            frmMenu.AbrirFormNaAba(new FrmCardapio().ReceberFormPrincipal(frmMenu), frmMenu.tabPgCardapio);
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)

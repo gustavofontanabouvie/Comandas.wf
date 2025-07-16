@@ -71,7 +71,7 @@
             tabPgCardapio.Location = new Point(4, 31);
             tabPgCardapio.Name = "tabPgCardapio";
             tabPgCardapio.Padding = new Padding(3);
-            tabPgCardapio.Size = new Size(837, 348);
+            tabPgCardapio.Size = new Size(886, 686);
             tabPgCardapio.TabIndex = 0;
             tabPgCardapio.Text = "Cardápio";
             tabPgCardapio.UseVisualStyleBackColor = true;
@@ -92,7 +92,7 @@
             tabPgPedidoCozinha.ImageKey = "imgPedidoCozinha.png";
             tabPgPedidoCozinha.Location = new Point(4, 31);
             tabPgPedidoCozinha.Name = "tabPgPedidoCozinha";
-            tabPgPedidoCozinha.Size = new Size(837, 348);
+            tabPgPedidoCozinha.Size = new Size(886, 686);
             tabPgPedidoCozinha.TabIndex = 2;
             tabPgPedidoCozinha.Text = "Pedido Cozinha";
             tabPgPedidoCozinha.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@
             tabPgUsuarios.ImageKey = "imgUsuarios.png";
             tabPgUsuarios.Location = new Point(4, 31);
             tabPgUsuarios.Name = "tabPgUsuarios";
-            tabPgUsuarios.Size = new Size(837, 348);
+            tabPgUsuarios.Size = new Size(886, 686);
             tabPgUsuarios.TabIndex = 3;
             tabPgUsuarios.Text = "Usuários";
             tabPgUsuarios.UseVisualStyleBackColor = true;
@@ -112,7 +112,7 @@
             tabPgMesa.ImageKey = "imgMesa.png";
             tabPgMesa.Location = new Point(4, 31);
             tabPgMesa.Name = "tabPgMesa";
-            tabPgMesa.Size = new Size(837, 348);
+            tabPgMesa.Size = new Size(886, 686);
             tabPgMesa.TabIndex = 4;
             tabPgMesa.Text = "Mesa";
             tabPgMesa.UseVisualStyleBackColor = true;
@@ -147,11 +147,11 @@
 
         private ContextMenuStrip contextMenuStrip1;
         private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
-        private TabPage tabPgCardapio;
-        private TabPage tabPgComanda;
-        private TabPage tabPgPedidoCozinha;
-        private TabPage tabPgUsuarios;
-        private TabPage tabPgMesa;
         private ImageList imageList1;
+        public TabPage tabPgCardapio;
+        public TabPage tabPgComanda;
+        public TabPage tabPgPedidoCozinha;
+        public TabPage tabPgUsuarios;
+        public TabPage tabPgMesa;
     }
 }

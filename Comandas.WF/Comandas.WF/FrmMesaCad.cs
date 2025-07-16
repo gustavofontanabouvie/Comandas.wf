@@ -7,23 +7,34 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using Comandas.WF.Database;
 using Comandas.WF.Models;
 using MaterialSkin;
 using MaterialSkin.Controls;
 
+
 namespace Comandas.WF
 {
+
     public partial class FrmMesaCad : MaterialForm
     {
+        private System.Windows.Forms.Timer timer10sec;
+
         public FrmMesaCad()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            timer10sec = new System.Windows.Forms.Timer();
+            timer10sec.Interval = 10000;
+            timer10sec.Tick += timer10sec_tick;
+            timer10sec.Start();
+
+            CarregarMesasDatagrid();
+        }
+
+        private void timer10sec_tick(object? sender, EventArgs e)
+        {
             CarregarMesasDatagrid();
         }
 
@@ -53,7 +64,7 @@ namespace Comandas.WF
             CarregarMesasDatagrid();
         }
 
-        private void CarregarMesasDatagrid()
+        public void CarregarMesasDatagrid()
         {
             dataGridViewMesas.Rows.Clear();
             using (var context = new ComandasDbContext())

@@ -14,26 +14,37 @@ namespace Comandas.WF
 {
     public partial class FrmComandaCad : Form
     {
-        FrmCardapio _frmCardapio;
+        public FrmPrincipalMenu _frmPrincipalMenu;
+
+        private List<ComandaItens> comandaItens = [];
         public FrmComandaCad()
         {
             InitializeComponent();
             cbxItens.DataSource = ListarItens();
-            cboxMesas.DataSource = ListarMesas();
-        }
+            cbxItens.DisplayMember = "Titulo";
+            cbxItens.ValueMember = "Id";
 
-        private List<int> ListarMesas()
+            cboxMesas.DataSource = ListarMesas();
+            cboxMesas.DisplayMember = "Numero";
+            cboxMesas.ValueMember = "Numero";
+        }
+        public FrmComandaCad ReceberFormPrincipal(FrmPrincipalMenu frmMenu)
+        {
+            _frmPrincipalMenu = frmMenu;
+            return this;
+        }
+        private List<Mesa> ListarMesas()
         {
             using (var context = new ComandasDbContext())
             {
-                return context.Mesas.ToList().Select(me => me.Numero).ToList();
+                return context.Mesas.ToList();
             }
         }
-        private List<String> ListarItens()
+        private List<CardapioItem> ListarItens()
         {
             using (var context = new ComandasDbContext())
             {
-                return context.CardapioItems.ToList().Select(i => i.Titulo).ToList();
+                return context.CardapioItems.ToList();
             }
         }
 
@@ -63,6 +74,10 @@ namespace Comandas.WF
                 if (!itemJaAdicionado)
                 {
                     dataGridView1.Rows.Add(itemSelecionado.Titulo, itemSelecionado.Descricao, itemSelecionado.Preco, 1);
+                    comandaItens.Add(new ComandaItens
+                    {
+                        CardapioItemId = itemSelecionado.Id
+                    });
                 }
             }
         }
@@ -70,11 +85,52 @@ namespace Comandas.WF
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+            _frmPrincipalMenu.AbrirFormNaAba(new FrmComanda().ReceberFormPrincipal(_frmPrincipalMenu), _frmPrincipalMenu.tabPgComanda);
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Confirmar");
+            InserirComanda();
+        }
+
+        private void InserirComanda()
+        {
+
+            var mesaSelecionada = (Mesa)cboxMesas.SelectedItem!;
+            var comanda = new Comanda()
+            {
+                NomeCliente = txtNomeCliente.Text,
+                NumeroMesa = mesaSelecionada.Numero,
+                SituacaoComanda = true,
+            };
+
+            mesaSelecionada.Cliente = txtNomeCliente.Text;
+            mesaSelecionada.SituacaoMesa = true;
+
+            List<ComandaItens> itensAInserir = [];
+            foreach (var item in comandaItens)
+            {
+                itensAInserir.Add(new ComandaItens
+                {
+                    Comanda = comanda,
+                    CardapioItemId = item.CardapioItemId
+                });
+            }
+
+            using (var context = new ComandasDbContext())
+            {
+                context.Comandas.Add(comanda);
+                context.ComandaItens.AddRange(itensAInserir);
+                context.Mesas.Update(mesaSelecionada);
+                context.SaveChanges();
+            }
+            LimparCampos();
+        }
+
+        private void LimparCampos()
+        {
+            dataGridView1.Rows.Clear();
+            txtNomeCliente.Clear();
         }
     }
 }

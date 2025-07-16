@@ -20,11 +20,18 @@ namespace Comandas.WF
     {
         public List<CardapioItem> itens = new List<CardapioItem>();
 
+        public FrmPrincipalMenu _frmPrincipalMenu;
 
         public FrmCardapio()
         {
             InitializeComponent();
             CarregarItens();
+        }
+
+        public FrmCardapio ReceberFormPrincipal(FrmPrincipalMenu frmMenu)
+        {
+            _frmPrincipalMenu = frmMenu;
+            return this;
         }
 
         public void CarregarItens()
@@ -46,7 +53,8 @@ namespace Comandas.WF
 
         private void btnAddItemCardapio_Click(object sender, EventArgs e)
         {
-            new FrmCardapioCad().Show();
+            this.Close();
+            _frmPrincipalMenu.AbrirFormNaAba(new FrmCardapioCad().ReceberFormPrincipal(_frmPrincipalMenu), _frmPrincipalMenu.tabPgCardapio);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -67,7 +75,7 @@ namespace Comandas.WF
         {
             int rowIndex = dataGridView1.CurrentCell.RowIndex;
             int id = Convert.ToInt32(dataGridView1.Rows[rowIndex].Cells[0].Value);
-            new FrmCardapioEdit(this, id).Show();
+            _frmPrincipalMenu.AbrirFormNaAba(new FrmCardapioEdit(this, id).ReceberFormPrincipal(_frmPrincipalMenu), _frmPrincipalMenu.tabPgCardapio);
         }
     }
 }

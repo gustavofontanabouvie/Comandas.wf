@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comandas.WF.Database;
+using MaterialSkin.Controls;
 
 namespace Comandas.WF
 {
-    public partial class FrmCardapioEdit : Form
+
+    public partial class FrmCardapioEdit : MaterialForm
     {
+        public FrmPrincipalMenu _frmPrincipalMenu;
+
+
         FrmCardapio _frmCardapio;
         int _itemId;
         public FrmCardapioEdit(FrmCardapio frmCardapio, int id)
@@ -21,6 +26,11 @@ namespace Comandas.WF
             _frmCardapio = frmCardapio;
             InitializeComponent();
             PreencherCampos();
+        }
+        public FrmCardapioEdit ReceberFormPrincipal(FrmPrincipalMenu frm)
+        {
+            _frmPrincipalMenu = frm;
+            return this;
         }
 
         private void PreencherCampos()
@@ -31,16 +41,18 @@ namespace Comandas.WF
             ckboxPreparo.Checked = Convert.ToBoolean(_frmCardapio.dataGridView1.CurrentRow.Cells[4].Value);
         }
 
+
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            _frmCardapio.Show();
             this.Close();
+            _frmPrincipalMenu.AbrirFormNaAba(new FrmCardapio().ReceberFormPrincipal(_frmPrincipalMenu), _frmPrincipalMenu.tabPgCardapio);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
- 
-            using(var context = new ComandasDbContext())
+
+            using (var context = new ComandasDbContext())
             {
                 var cardapioItem = context.CardapioItems.First(ci => ci.Id == _itemId);
                 cardapioItem.Titulo = txtTitulo.Text;

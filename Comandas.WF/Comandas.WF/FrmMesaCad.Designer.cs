@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnCadastrarMesa = new MaterialSkin.Controls.MaterialButton();
             dataGridViewMesas = new DataGridView();
             numeroMesa = new DataGridViewTextBoxColumn();
@@ -37,6 +38,7 @@
             txtNumeroMesa = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dataGridViewMesas).BeginInit();
             SuspendLayout();
             // 
@@ -176,5 +178,6 @@
         private DataGridViewTextBoxColumn numeroMesa;
         private DataGridViewTextBoxColumn clienteMesa;
         private DataGridViewTextBoxColumn situacaoMesa;
+        private System.Windows.Forms.Timer timer1;
     }
 }

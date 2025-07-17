@@ -27,6 +27,7 @@ namespace Comandas.WF
             cboxMesas.DataSource = ListarMesas();
             cboxMesas.DisplayMember = "Numero";
             cboxMesas.ValueMember = "Numero";
+            cboxMesas.SelectedIndex = -1;
         }
         public FrmComandaCad ReceberFormPrincipal(FrmPrincipalMenu frmMenu)
         {
@@ -95,8 +96,24 @@ namespace Comandas.WF
 
         private void InserirComanda()
         {
+            bool camposValidados = ValidarCampos();
+            if (!camposValidados)
+            {
+                return;
+            }
 
             var mesaSelecionada = (Mesa)cboxMesas.SelectedItem!;
+            using (var context = new ComandasDbContext())
+            {
+                mesaSelecionada = context.Mesas.First(me => me.Id == mesaSelecionada.Id);
+            }
+
+            if (mesaSelecionada.SituacaoMesa)
+            {
+                MessageBox.Show($"Mesa {mesaSelecionada.Numero} Já está ocupada");
+                return;
+            }
+
             var comanda = new Comanda()
             {
                 NomeCliente = txtNomeCliente.Text,
@@ -125,6 +142,23 @@ namespace Comandas.WF
                 context.SaveChanges();
             }
             LimparCampos();
+        }
+
+        private bool ValidarCampos()
+        {
+            if (cboxMesas.SelectedIndex == -1)
+            {
+                MessageBox.Show("Selecione uma mesa");
+                cboxMesas.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(txtNomeCliente.Text))
+            {
+                MessageBox.Show("Digite o nome do cliente");
+                txtNomeCliente.Focus();
+                return false;
+            }
+            return true;
         }
 
         private void LimparCampos()

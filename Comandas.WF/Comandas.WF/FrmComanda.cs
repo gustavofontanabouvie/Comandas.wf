@@ -17,6 +17,7 @@ namespace Comandas.WF
     {
 
         public FrmPrincipalMenu _frmPrincipalMenu;
+
         public FrmComanda()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace Comandas.WF
 
             using (var context = new ComandasDbContext())
             {
-                foreach (var comanda in context.Comandas)
+                foreach (var comanda in context.Comandas.Where(co => co.SituacaoComanda == true))
                 {
                     dataGridViewComandas.Rows.Add(comanda.NumeroMesa, comanda.NomeCliente, comanda.Id);
                 }
@@ -56,17 +57,27 @@ namespace Comandas.WF
             using (var context = new ComandasDbContext())
             {
                 var comanda = context.Comandas.FirstOrDefault(ci => ci.Id == id);
-                var itens = context.ComandaItens.Where(ci => ci.ComandaId == id).ToList();
+                comanda.SituacaoComanda = false;
 
                 var mesa = context.Mesas.First(me => me.Numero == comanda!.NumeroMesa);
                 mesa.Cliente = "sem cliente";
                 mesa.SituacaoMesa = false;
 
-                context.RemoveRange(itens);
-                context.Comandas.Remove(comanda!);
+
+                context.Comandas.Update(comanda!);
                 context.SaveChanges();
             }
             PreencherDataGrid();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            materialCardMiddle.Visible = true;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            materialCardMiddle.Visible = false;
         }
     }
 }

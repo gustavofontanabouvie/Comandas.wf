@@ -16,12 +16,25 @@ namespace Comandas.WF
     public partial class FrmComanda : Form
     {
 
+        private List<ComandaItens> comandaItens = [];
+
         public FrmPrincipalMenu _frmPrincipalMenu;
 
         public FrmComanda()
         {
             InitializeComponent();
+            cbxItens.DataSource = ListarItens();
+            cbxItens.DisplayMember = "Titulo";
+            cbxItens.ValueMember = "Id";
             PreencherDataGrid();
+        }
+
+        private List<CardapioItem> ListarItens()
+        {
+            using (var context = new ComandasDbContext())
+            {
+                return context.CardapioItems.ToList();
+            }
         }
 
         private void btnAddComanda_Click(object sender, EventArgs e)
@@ -78,6 +91,78 @@ namespace Comandas.WF
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             materialCardMiddle.Visible = false;
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            using (var context = new ComandasDbContext())
+            {
+                var itemSelecionado = context.CardapioItems.First(ci => ci.Titulo.Equals(cbxItens.Text));
+                bool itemJaAdicionado = false;
+
+                foreach (DataGridViewRow row in dataGridViewItens.Rows)
+                {
+                    if (row.Cells[0].Value != null && row.Cells[0].Value.Equals(itemSelecionado.Titulo))
+                    {
+                        int quantidadeAtual = Convert.ToInt32(row.Cells[3].Value);
+                        row.Cells[3].Value = quantidadeAtual + 1;
+
+                        itemJaAdicionado = true;
+                        break;
+                    }
+
+                }
+                if (!itemJaAdicionado)
+                {
+                    dataGridViewItens.Rows.Add(itemSelecionado.Titulo, itemSelecionado.Descricao, itemSelecionado.Preco, 1);
+                    comandaItens.Add(new ComandaItens
+                    {
+                        CardapioItemId = itemSelecionado.Id
+                    });
+                }
+            }
+
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            EditarComanda();
+        }
+
+        private void EditarComanda()
+        {
+            Mesa mesaSelecionada;
+            Comanda comanda;
+
+            int rowIndex = dataGridViewComandas.CurrentCell.RowIndex;
+            int numeroMesa = Convert.ToInt32(dataGridViewComandas.Rows[rowIndex].Cells[0].Value);
+
+
+            using (var context = new ComandasDbContext())
+            {
+                mesaSelecionada = context.Mesas.First(me => me.Numero == numeroMesa);
+
+                comanda = context.Comandas.First(co => co.NumeroMesa == mesaSelecionada.Numero);
+            }
+
+            List<ComandaItens> itensAInserir = [];
+            foreach (var item in comandaItens)
+            {
+                itensAInserir.Add(new ComandaItens
+                {
+                    Comanda = comanda,
+                    CardapioItemId = item.CardapioItemId
+                });
+            }
+            using (var context = new ComandasDbContext())
+            {
+                context.ComandaItens.AddRange(itensAInserir);
+                context.Update(comanda);
+                context.SaveChanges();
+            }
+
+            PreencherDataGrid();
+            dataGridViewItens.Rows.Clear();
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Comandas.WF.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public int ComandaId{ get; set; }
+        public int ComandaId { get; set; }
         public virtual Comanda Comanda { get; set; }
-        public bool Situacao { get; set; }
+        public int Situacao { get; set; }
         public virtual ICollection<PedidoCozinhaItem> PedidoCozinhaItens { get; set; }
     }
 }

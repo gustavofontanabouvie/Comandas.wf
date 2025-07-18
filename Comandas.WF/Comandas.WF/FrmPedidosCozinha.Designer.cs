@@ -29,33 +29,33 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            dataGridView1 = new DataGridView();
+            dataGridViewPendentes = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
-            dataGridView2 = new DataGridView();
+            dataGridViewAndamento = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             groupBox3 = new GroupBox();
-            dataGridView3 = new DataGridView();
+            dataGridViewFinalizados = new DataGridView();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            button2 = new MaterialSkin.Controls.MaterialButton();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            btnVoltar = new MaterialSkin.Controls.MaterialButton();
+            btnAvancar = new MaterialSkin.Controls.MaterialButton();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPendentes).BeginInit();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAndamento).BeginInit();
             groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewFinalizados).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(dataGridView1);
+            groupBox1.Controls.Add(dataGridViewPendentes);
             groupBox1.Location = new Point(5, 12);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(310, 425);
@@ -63,21 +63,20 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Pendentes";
             // 
-            // dataGridView1
+            // dataGridViewPendentes
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.ControlLight;
-            dataGridView1.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
-            dataGridView1.Location = new Point(16, 41);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(275, 366);
-            dataGridView1.TabIndex = 0;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewPendentes.AllowUserToAddRows = false;
+            dataGridViewPendentes.AllowUserToDeleteRows = false;
+            dataGridViewPendentes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewPendentes.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewPendentes.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewPendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPendentes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            dataGridViewPendentes.Location = new Point(16, 41);
+            dataGridViewPendentes.Name = "dataGridViewPendentes";
+            dataGridViewPendentes.ReadOnly = true;
+            dataGridViewPendentes.Size = new Size(275, 366);
+            dataGridViewPendentes.TabIndex = 0;
             // 
             // Column1
             // 
@@ -102,7 +101,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(dataGridView2);
+            groupBox2.Controls.Add(dataGridViewAndamento);
             groupBox2.Location = new Point(316, 12);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(310, 425);
@@ -110,19 +109,20 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Em andamento";
             // 
-            // dataGridView2
+            // dataGridViewAndamento
             // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.BackgroundColor = SystemColors.ControlLight;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
-            dataGridView2.Location = new Point(16, 41);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.Size = new Size(275, 366);
-            dataGridView2.TabIndex = 0;
+            dataGridViewAndamento.AllowUserToAddRows = false;
+            dataGridViewAndamento.AllowUserToDeleteRows = false;
+            dataGridViewAndamento.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewAndamento.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewAndamento.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
+            dataGridViewAndamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
+            dataGridViewAndamento.Location = new Point(15, 41);
+            dataGridViewAndamento.Name = "dataGridViewAndamento";
+            dataGridViewAndamento.ReadOnly = true;
+            dataGridViewAndamento.Size = new Size(275, 366);
+            dataGridViewAndamento.TabIndex = 1;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -147,7 +147,7 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(dataGridView3);
+            groupBox3.Controls.Add(dataGridViewFinalizados);
             groupBox3.Location = new Point(626, 12);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(310, 425);
@@ -155,19 +155,19 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Finalizado";
             // 
-            // dataGridView3
+            // dataGridViewFinalizados
             // 
-            dataGridView3.AllowUserToAddRows = false;
-            dataGridView3.AllowUserToDeleteRows = false;
-            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView3.BackgroundColor = SystemColors.ControlLight;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
-            dataGridView3.Location = new Point(16, 41);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.ReadOnly = true;
-            dataGridView3.Size = new Size(275, 366);
-            dataGridView3.TabIndex = 0;
+            dataGridViewFinalizados.AllowUserToAddRows = false;
+            dataGridViewFinalizados.AllowUserToDeleteRows = false;
+            dataGridViewFinalizados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewFinalizados.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            dataGridViewFinalizados.Location = new Point(16, 41);
+            dataGridViewFinalizados.Name = "dataGridViewFinalizados";
+            dataGridViewFinalizados.ReadOnly = true;
+            dataGridViewFinalizados.Size = new Size(275, 366);
+            dataGridViewFinalizados.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -190,64 +190,66 @@
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
-            // button2
+            // btnVoltar
             // 
-            button2.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            button2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            button2.Depth = 0;
-            button2.HighEmphasis = true;
-            button2.Icon = null;
-            button2.Location = new Point(398, 446);
-            button2.Margin = new Padding(4, 6, 4, 6);
-            button2.MaximumSize = new Size(500, 25);
-            button2.MouseState = MaterialSkin.MouseState.HOVER;
-            button2.Name = "button2";
-            button2.NoAccentTextColor = Color.Empty;
-            button2.Size = new Size(64, 25);
-            button2.TabIndex = 4;
-            button2.Text = "<-";
-            button2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            button2.UseAccentColor = false;
-            button2.UseVisualStyleBackColor = true;
+            btnVoltar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnVoltar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnVoltar.Depth = 0;
+            btnVoltar.HighEmphasis = true;
+            btnVoltar.Icon = null;
+            btnVoltar.Location = new Point(398, 446);
+            btnVoltar.Margin = new Padding(4, 6, 4, 6);
+            btnVoltar.MaximumSize = new Size(500, 25);
+            btnVoltar.MouseState = MaterialSkin.MouseState.HOVER;
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.NoAccentTextColor = Color.Empty;
+            btnVoltar.Size = new Size(64, 25);
+            btnVoltar.TabIndex = 4;
+            btnVoltar.Text = "<-";
+            btnVoltar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnVoltar.UseAccentColor = false;
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
             // 
-            // materialButton1
+            // btnAvancar
             // 
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(492, 446);
-            materialButton1.Margin = new Padding(4, 6, 4, 6);
-            materialButton1.MaximumSize = new Size(500, 25);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(64, 25);
-            materialButton1.TabIndex = 4;
-            materialButton1.Text = "->";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
+            btnAvancar.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAvancar.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAvancar.Depth = 0;
+            btnAvancar.HighEmphasis = true;
+            btnAvancar.Icon = null;
+            btnAvancar.Location = new Point(492, 446);
+            btnAvancar.Margin = new Padding(4, 6, 4, 6);
+            btnAvancar.MaximumSize = new Size(500, 25);
+            btnAvancar.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAvancar.Name = "btnAvancar";
+            btnAvancar.NoAccentTextColor = Color.Empty;
+            btnAvancar.Size = new Size(64, 25);
+            btnAvancar.TabIndex = 4;
+            btnAvancar.Text = "->";
+            btnAvancar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnAvancar.UseAccentColor = false;
+            btnAvancar.UseVisualStyleBackColor = true;
+            btnAvancar.Click += btnAvancar_Click;
             // 
             // FrmPedidosCozinha
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(934, 475);
-            Controls.Add(materialButton1);
-            Controls.Add(button2);
+            Controls.Add(btnAvancar);
+            Controls.Add(btnVoltar);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FrmPedidosCozinha";
             Text = "FrmPedidosCozinha";
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPendentes).EndInit();
             groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewAndamento).EndInit();
             groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewFinalizados).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -255,21 +257,21 @@
         #endregion
 
         private GroupBox groupBox1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewPendentes;
         private GroupBox groupBox2;
-        private DataGridView dataGridView2;
         private GroupBox groupBox3;
-        private DataGridView dataGridView3;
-        private MaterialSkin.Controls.MaterialButton button2;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private DataGridView dataGridViewFinalizados;
+        private MaterialSkin.Controls.MaterialButton btnVoltar;
+        private MaterialSkin.Controls.MaterialButton btnAvancar;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridView dataGridViewAndamento;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

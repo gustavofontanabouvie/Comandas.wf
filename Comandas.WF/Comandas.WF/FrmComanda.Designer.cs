@@ -41,7 +41,7 @@
             materialCardMiddle = new MaterialSkin.Controls.MaterialCard();
             btnCancelar = new MaterialSkin.Controls.MaterialButton();
             btnConfirmar = new MaterialSkin.Controls.MaterialButton();
-            dataGridView1 = new DataGridView();
+            dataGridViewItens = new DataGridView();
             titulo = new DataGridViewTextBoxColumn();
             descricao = new DataGridViewTextBoxColumn();
             preco = new DataGridViewTextBoxColumn();
@@ -53,7 +53,7 @@
             materialCardBot.SuspendLayout();
             materialCardTop.SuspendLayout();
             materialCardMiddle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewItens).BeginInit();
             SuspendLayout();
             // 
             // dataGridViewComandas
@@ -203,7 +203,7 @@
             materialCardMiddle.BackColor = Color.FromArgb(255, 255, 255);
             materialCardMiddle.Controls.Add(btnCancelar);
             materialCardMiddle.Controls.Add(btnConfirmar);
-            materialCardMiddle.Controls.Add(dataGridView1);
+            materialCardMiddle.Controls.Add(dataGridViewItens);
             materialCardMiddle.Controls.Add(btnAddItem);
             materialCardMiddle.Controls.Add(materialLabel3);
             materialCardMiddle.Controls.Add(cbxItens);
@@ -256,17 +256,18 @@
             btnConfirmar.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnConfirmar.UseAccentColor = false;
             btnConfirmar.UseVisualStyleBackColor = true;
+            btnConfirmar.Click += btnConfirmar_Click;
             // 
-            // dataGridView1
+            // dataGridViewItens
             // 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.ControlLight;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { titulo, descricao, preco, quantidade });
-            dataGridView1.Location = new Point(77, 80);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(639, 116);
-            dataGridView1.TabIndex = 7;
+            dataGridViewItens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewItens.BackgroundColor = SystemColors.ControlLight;
+            dataGridViewItens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewItens.Columns.AddRange(new DataGridViewColumn[] { titulo, descricao, preco, quantidade });
+            dataGridViewItens.Location = new Point(77, 80);
+            dataGridViewItens.Name = "dataGridViewItens";
+            dataGridViewItens.Size = new Size(639, 116);
+            dataGridViewItens.TabIndex = 7;
             // 
             // titulo
             // 
@@ -314,6 +315,7 @@
             btnAddItem.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnAddItem.UseAccentColor = false;
             btnAddItem.UseVisualStyleBackColor = true;
+            btnAddItem.Click += btnAddItem_Click;
             // 
             // materialLabel3
             // 
@@ -368,7 +370,7 @@
             materialCardTop.PerformLayout();
             materialCardMiddle.ResumeLayout(false);
             materialCardMiddle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewItens).EndInit();
             ResumeLayout(false);
         }
 
@@ -389,7 +391,7 @@
         private MaterialSkin.Controls.MaterialComboBox cbxItens;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialButton btnAddItem;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewItens;
         private DataGridViewTextBoxColumn titulo;
         private DataGridViewTextBoxColumn descricao;
         private DataGridViewTextBoxColumn preco;

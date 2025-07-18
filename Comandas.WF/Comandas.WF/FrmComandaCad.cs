@@ -121,6 +121,13 @@ namespace Comandas.WF
                 SituacaoComanda = true,
             };
 
+            var pedidoCozinha = new PedidoCozinha()
+            {
+                Comanda = comanda,
+                Situacao = 1
+            };
+
+
             mesaSelecionada.Cliente = txtNomeCliente.Text;
             mesaSelecionada.SituacaoMesa = true;
 
@@ -134,11 +141,30 @@ namespace Comandas.WF
                 });
             }
 
+            List<ComandaItens> itensComPreparo = [];
+            foreach (var item in itensAInserir)
+            {
+                if (item.CardapioItem.PossuiPreparo == true)
+                    itensComPreparo.Add(item);
+            }
+
+            List<PedidoCozinhaItem> pedidoCozinhaItens = [];
+            foreach (var item in itensComPreparo)
+            {
+                pedidoCozinhaItens.Add(new PedidoCozinhaItem
+                {
+                    PedidoCozinha = pedidoCozinha,
+                    ComandaItemId = (int)item.Id!
+                });
+            }
+
             using (var context = new ComandasDbContext())
             {
                 context.Comandas.Add(comanda);
                 context.ComandaItens.AddRange(itensAInserir);
                 context.Mesas.Update(mesaSelecionada);
+                context.PedidosCozinha.Add(pedidoCozinha);
+                context.PedidoCozinhaItems.AddRange(pedidoCozinhaItens);
                 context.SaveChanges();
             }
             LimparCampos();

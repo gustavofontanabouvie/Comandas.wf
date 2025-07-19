@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Comandas.WF.Database;
 using Comandas.WF.Models;
 using Comandas.WF.ViewModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Comandas.WF
 {
@@ -145,6 +146,13 @@ namespace Comandas.WF
                 comanda = context.Comandas.First(co => co.NumeroMesa == mesaSelecionada.Numero);
             }
 
+            var pedidoCozinha = new PedidoCozinha()
+            {
+                Comanda = comanda,
+                Situacao = 1
+            };
+
+            List<ComandaItens> itensComPreparo = [];
             List<ComandaItens> itensAInserir = [];
             foreach (var item in comandaItens)
             {
@@ -153,11 +161,42 @@ namespace Comandas.WF
                     Comanda = comanda,
                     CardapioItemId = item.CardapioItemId
                 });
+
+                if (item.CardapioItem != null && item.CardapioItem.PossuiPreparo)
+                {
+                    itensComPreparo.Add(new ComandaItens
+                    {
+                        CardapioItemId = item.CardapioItemId,
+                        Comanda = comanda
+                    });
+                }
             }
+
             using (var context = new ComandasDbContext())
             {
+
                 context.ComandaItens.AddRange(itensAInserir);
                 context.Update(comanda);
+                context.PedidosCozinha.Add(pedidoCozinha);
+                context.SaveChanges();
+            }
+            List<PedidoCozinhaItem> pedidoCozinhaItens = [];
+            using (var context = new ComandasDbContext())
+            {
+                var itensSalvos = context.ComandaItens.Where(ci => ci.Id == comanda.Id).Include(ci => ci.CardapioItem).ToList();
+                foreach (var item in itensSalvos)
+                {
+                    if (item.CardapioItem != null && item.CardapioItem.PossuiPreparo)
+                    {
+                        pedidoCozinhaItens.Add(new PedidoCozinhaItem
+                        {
+                            ComandaItemId = item.Id.Value,
+                            PedidoCozinhaId = pedidoCozinha.Id
+                        });
+                    }
+                }
+
+                context.PedidoCozinhaItems.AddRange(pedidoCozinhaItens);
                 context.SaveChanges();
             }
 

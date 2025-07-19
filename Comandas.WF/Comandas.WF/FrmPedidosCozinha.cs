@@ -27,7 +27,6 @@ namespace Comandas.WF
             {
                 foreach (var pedidoPendente in context.PedidosCozinha.Where(pc => pc.Situacao == 1))
                 {
-                    itens.Add((PedidoCozinhaItem)context.PedidoCozinhaItems.Where(pci => pci.PedidoCozinhaId == pedidoPendente.Id));
                 }
             }
         }

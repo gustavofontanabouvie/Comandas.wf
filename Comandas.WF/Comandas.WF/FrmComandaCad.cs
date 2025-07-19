@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Comandas.WF.Database;
 using Comandas.WF.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Comandas.WF
 {
@@ -132,6 +133,8 @@ namespace Comandas.WF
             mesaSelecionada.SituacaoMesa = true;
 
             List<ComandaItens> itensAInserir = [];
+            List<ComandaItens> itensComPreparo = [];
+            List<PedidoCozinhaItem> pedidoCozinhaItens = [];
             foreach (var item in comandaItens)
             {
                 itensAInserir.Add(new ComandaItens
@@ -139,23 +142,15 @@ namespace Comandas.WF
                     Comanda = comanda,
                     CardapioItemId = item.CardapioItemId
                 });
-            }
 
-            List<ComandaItens> itensComPreparo = [];
-            foreach (var item in itensAInserir)
-            {
-                if (item.CardapioItem.PossuiPreparo == true)
-                    itensComPreparo.Add(item);
-            }
-
-            List<PedidoCozinhaItem> pedidoCozinhaItens = [];
-            foreach (var item in itensComPreparo)
-            {
-                pedidoCozinhaItens.Add(new PedidoCozinhaItem
+                if (item.CardapioItem != null && item.CardapioItem.PossuiPreparo)
                 {
-                    PedidoCozinha = pedidoCozinha,
-                    ComandaItemId = (int)item.Id!
-                });
+                    itensComPreparo.Add(new ComandaItens
+                    {
+                        CardapioItemId = item.CardapioItemId,
+                        Comanda = comanda
+                    });
+                }
             }
 
             using (var context = new ComandasDbContext())
@@ -164,9 +159,27 @@ namespace Comandas.WF
                 context.ComandaItens.AddRange(itensAInserir);
                 context.Mesas.Update(mesaSelecionada);
                 context.PedidosCozinha.Add(pedidoCozinha);
+                context.SaveChanges();
+            }
+
+            using (var context = new ComandasDbContext())
+            {
+                var itensSalvos = context.ComandaItens.Where(ci => ci.Id == comanda.Id).Include(ci => ci.CardapioItem).ToList();
+                foreach (var item in itensSalvos)
+                {
+                    if (item.CardapioItem != null && item.CardapioItem.PossuiPreparo)
+                    {
+                        pedidoCozinhaItens.Add(new PedidoCozinhaItem
+                        {
+                            ComandaItemId = item.Id.Value,
+                            PedidoCozinhaId = pedidoCozinha.Id
+                        });
+                    }
+                }
                 context.PedidoCozinhaItems.AddRange(pedidoCozinhaItens);
                 context.SaveChanges();
             }
+
             LimparCampos();
         }
 

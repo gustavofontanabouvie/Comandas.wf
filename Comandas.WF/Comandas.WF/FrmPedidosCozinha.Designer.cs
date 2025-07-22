@@ -33,16 +33,19 @@
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             dataGridViewAndamento = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
+            Column5 = new DataGridViewTextBoxColumn();
             groupBox3 = new GroupBox();
             dataGridViewFinalizados = new DataGridView();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            Column6 = new DataGridViewTextBoxColumn();
             btnVoltar = new MaterialSkin.Controls.MaterialButton();
             btnAvancar = new MaterialSkin.Controls.MaterialButton();
             groupBox1.SuspendLayout();
@@ -71,12 +74,13 @@
             dataGridViewPendentes.BackgroundColor = SystemColors.ControlLight;
             dataGridViewPendentes.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewPendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPendentes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
+            dataGridViewPendentes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dataGridViewPendentes.Location = new Point(16, 41);
             dataGridViewPendentes.Name = "dataGridViewPendentes";
             dataGridViewPendentes.ReadOnly = true;
             dataGridViewPendentes.Size = new Size(275, 366);
             dataGridViewPendentes.TabIndex = 0;
+            dataGridViewPendentes.CellClick += dataGridViewPendentes_CellClick;
             // 
             // Column1
             // 
@@ -99,6 +103,13 @@
             Column3.Name = "Column3";
             Column3.ReadOnly = true;
             // 
+            // Column4
+            // 
+            Column4.HeaderText = "PedidoCozinhaId";
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
+            Column4.Visible = false;
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(dataGridViewAndamento);
@@ -117,12 +128,13 @@
             dataGridViewAndamento.BackgroundColor = SystemColors.ControlLight;
             dataGridViewAndamento.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewAndamento.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3 });
+            dataGridViewAndamento.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, Column5 });
             dataGridViewAndamento.Location = new Point(15, 41);
             dataGridViewAndamento.Name = "dataGridViewAndamento";
             dataGridViewAndamento.ReadOnly = true;
             dataGridViewAndamento.Size = new Size(275, 366);
             dataGridViewAndamento.TabIndex = 1;
+            dataGridViewAndamento.CellClick += dataGridViewAndamento_CellClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -145,6 +157,13 @@
             dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             dataGridViewTextBoxColumn3.ReadOnly = true;
             // 
+            // Column5
+            // 
+            Column5.HeaderText = "PedidoCozinhaId";
+            Column5.Name = "Column5";
+            Column5.ReadOnly = true;
+            Column5.Visible = false;
+            // 
             // groupBox3
             // 
             groupBox3.Controls.Add(dataGridViewFinalizados);
@@ -162,12 +181,13 @@
             dataGridViewFinalizados.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewFinalizados.BackgroundColor = SystemColors.ControlLight;
             dataGridViewFinalizados.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6 });
+            dataGridViewFinalizados.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, Column6 });
             dataGridViewFinalizados.Location = new Point(16, 41);
             dataGridViewFinalizados.Name = "dataGridViewFinalizados";
             dataGridViewFinalizados.ReadOnly = true;
             dataGridViewFinalizados.Size = new Size(275, 366);
             dataGridViewFinalizados.TabIndex = 0;
+            dataGridViewFinalizados.CellClick += dataGridViewFinalizados_CellClick;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -189,6 +209,13 @@
             dataGridViewTextBoxColumn6.HeaderText = "Item";
             dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             dataGridViewTextBoxColumn6.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            Column6.HeaderText = "PedidoCozinhaId";
+            Column6.Name = "Column6";
+            Column6.ReadOnly = true;
+            Column6.Visible = false;
             // 
             // btnVoltar
             // 
@@ -263,15 +290,18 @@
         private DataGridView dataGridViewFinalizados;
         private MaterialSkin.Controls.MaterialButton btnVoltar;
         private MaterialSkin.Controls.MaterialButton btnAvancar;
+        private DataGridView dataGridViewAndamento;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridView dataGridViewAndamento;
+        private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

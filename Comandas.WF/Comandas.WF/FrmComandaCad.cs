@@ -122,18 +122,11 @@ namespace Comandas.WF
                 SituacaoComanda = true,
             };
 
-            var pedidoCozinha = new PedidoCozinha()
-            {
-                Comanda = comanda,
-                Situacao = 1
-            };
-
 
             mesaSelecionada.Cliente = txtNomeCliente.Text;
             mesaSelecionada.SituacaoMesa = true;
 
             List<ComandaItens> itensAInserir = [];
-            List<ComandaItens> itensComPreparo = [];
             List<PedidoCozinhaItem> pedidoCozinhaItens = [];
             foreach (var item in comandaItens)
             {
@@ -142,15 +135,6 @@ namespace Comandas.WF
                     Comanda = comanda,
                     CardapioItemId = item.CardapioItemId
                 });
-
-                if (item.CardapioItem != null && item.CardapioItem.PossuiPreparo)
-                {
-                    itensComPreparo.Add(new ComandaItens
-                    {
-                        CardapioItemId = item.CardapioItemId,
-                        Comanda = comanda
-                    });
-                }
             }
 
             using (var context = new ComandasDbContext())
@@ -158,25 +142,27 @@ namespace Comandas.WF
                 context.Comandas.Add(comanda);
                 context.ComandaItens.AddRange(itensAInserir);
                 context.Mesas.Update(mesaSelecionada);
-                context.PedidosCozinha.Add(pedidoCozinha);
-                context.SaveChanges();
-            }
 
-            using (var context = new ComandasDbContext())
-            {
-                var itensSalvos = context.ComandaItens.Where(ci => ci.Id == comanda.Id).Include(ci => ci.CardapioItem).ToList();
-                foreach (var item in itensSalvos)
+                foreach (var item in itensAInserir)
                 {
-                    if (item.CardapioItem != null && item.CardapioItem.PossuiPreparo)
+                    var cardapioItem = context.CardapioItems.First(ci => ci.Id == item.CardapioItemId);
+                    if (cardapioItem != null && cardapioItem.PossuiPreparo)
                     {
-                        pedidoCozinhaItens.Add(new PedidoCozinhaItem
+                        var pedidoCozinha = new PedidoCozinha()
                         {
-                            ComandaItemId = item.Id.Value,
-                            PedidoCozinhaId = pedidoCozinha.Id
-                        });
+                            Comanda = comanda,
+                            Situacao = 1,
+                            PedidoCozinhaItens = new List<PedidoCozinhaItem>()
+                            {
+                                new PedidoCozinhaItem()
+                                {
+                                     ComandaItem = item
+                                }
+                            }
+                        };
+                        context.PedidosCozinha.Add(pedidoCozinha);
                     }
                 }
-                context.PedidoCozinhaItems.AddRange(pedidoCozinhaItens);
                 context.SaveChanges();
             }
 

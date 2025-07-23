@@ -42,13 +42,12 @@
             btnCancelar = new MaterialSkin.Controls.MaterialButton();
             btnConfirmar = new MaterialSkin.Controls.MaterialButton();
             dataGridViewItens = new DataGridView();
-            titulo = new DataGridViewTextBoxColumn();
-            descricao = new DataGridViewTextBoxColumn();
-            preco = new DataGridViewTextBoxColumn();
-            quantidade = new DataGridViewTextBoxColumn();
             btnAddItem = new MaterialSkin.Controls.MaterialButton();
             materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             cbxItens = new MaterialSkin.Controls.MaterialComboBox();
+            titulo = new DataGridViewTextBoxColumn();
+            descricao = new DataGridViewTextBoxColumn();
+            preco = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridViewComandas).BeginInit();
             materialCardBot.SuspendLayout();
             materialCardTop.SuspendLayout();
@@ -263,39 +262,11 @@
             dataGridViewItens.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewItens.BackgroundColor = SystemColors.ControlLight;
             dataGridViewItens.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewItens.Columns.AddRange(new DataGridViewColumn[] { titulo, descricao, preco, quantidade });
+            dataGridViewItens.Columns.AddRange(new DataGridViewColumn[] { titulo, descricao, preco });
             dataGridViewItens.Location = new Point(77, 80);
             dataGridViewItens.Name = "dataGridViewItens";
             dataGridViewItens.Size = new Size(639, 116);
             dataGridViewItens.TabIndex = 7;
-            // 
-            // titulo
-            // 
-            titulo.FillWeight = 50.4923859F;
-            titulo.HeaderText = "Titulo";
-            titulo.Name = "titulo";
-            titulo.ReadOnly = true;
-            // 
-            // descricao
-            // 
-            descricao.FillWeight = 99.4923859F;
-            descricao.HeaderText = "Descrição";
-            descricao.Name = "descricao";
-            descricao.ReadOnly = true;
-            // 
-            // preco
-            // 
-            preco.FillWeight = 30.52284F;
-            preco.HeaderText = "Preço";
-            preco.Name = "preco";
-            preco.ReadOnly = true;
-            // 
-            // quantidade
-            // 
-            quantidade.FillWeight = 35.4923859F;
-            quantidade.HeaderText = "Quantidade";
-            quantidade.Name = "quantidade";
-            quantidade.ReadOnly = true;
             // 
             // btnAddItem
             // 
@@ -352,6 +323,27 @@
             cbxItens.StartIndex = 0;
             cbxItens.TabIndex = 4;
             // 
+            // titulo
+            // 
+            titulo.FillWeight = 50.4923859F;
+            titulo.HeaderText = "Titulo";
+            titulo.Name = "titulo";
+            titulo.ReadOnly = true;
+            // 
+            // descricao
+            // 
+            descricao.FillWeight = 99.4923859F;
+            descricao.HeaderText = "Descrição";
+            descricao.Name = "descricao";
+            descricao.ReadOnly = true;
+            // 
+            // preco
+            // 
+            preco.FillWeight = 30.52284F;
+            preco.HeaderText = "Preço";
+            preco.Name = "preco";
+            preco.ReadOnly = true;
+            // 
             // FrmComanda
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -392,11 +384,10 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialButton btnAddItem;
         private DataGridView dataGridViewItens;
+        private MaterialSkin.Controls.MaterialButton btnConfirmar;
+        private MaterialSkin.Controls.MaterialButton btnCancelar;
         private DataGridViewTextBoxColumn titulo;
         private DataGridViewTextBoxColumn descricao;
         private DataGridViewTextBoxColumn preco;
-        private DataGridViewTextBoxColumn quantidade;
-        private MaterialSkin.Controls.MaterialButton btnConfirmar;
-        private MaterialSkin.Controls.MaterialButton btnCancelar;
     }
 }

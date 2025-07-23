@@ -33,12 +33,16 @@ namespace Comandas.WF
             dataGridViewFinalizados.Rows.Clear();
             using (var context = new ComandasDbContext())
             {
-                var pedidosFinalizados = context.PedidosCozinha.Where(pc => pc.Comanda.SituacaoComanda).Include(c => c.Comanda).ThenInclude(ci => ci.ComandaItens).ThenInclude(cai => cai.CardapioItem).Where(pc => pc.Situacao == 3).ToList();
-                foreach (var pedidoFinalizado in pedidosFinalizados)
+                var itensFinalizados = context.PedidoCozinhaItems.Include(pci => pci.PedidoCozinha).ThenInclude(pc => pc.Comanda).ThenInclude(c => c.ComandaItens).ThenInclude(ci => ci.CardapioItem).Where(pci => pci.PedidoCozinha.Situacao == 3).Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
+
+                foreach (var item in itensFinalizados)
                 {
-                    foreach (var item in pedidoFinalizado.Comanda.ComandaItens)
+                    var comanda = item.PedidoCozinha.Comanda;
+                    var cardapioItem = item.ComandaItem.CardapioItem;
+
+                    if (cardapioItem.PossuiPreparo)
                     {
-                        dataGridViewFinalizados.Rows.Add(pedidoFinalizado.Comanda.NumeroMesa.ToString(), pedidoFinalizado.Comanda.NomeCliente, item.CardapioItem.Titulo, pedidoFinalizado.Id.ToString());
+                        dataGridViewFinalizados.Rows.Add(comanda.NumeroMesa.ToString(), comanda.NomeCliente, cardapioItem.Titulo, item.PedidoCozinha.Id);
                     }
                 }
             }
@@ -49,12 +53,16 @@ namespace Comandas.WF
             dataGridViewAndamento.Rows.Clear();
             using (var context = new ComandasDbContext())
             {
-                var pedidosEmAndamento = context.PedidosCozinha.Where(pc => pc.Comanda.SituacaoComanda).Include(c => c.Comanda).ThenInclude(ci => ci.ComandaItens).ThenInclude(cai => cai.CardapioItem).Where(pc => pc.Situacao == 2).ToList();
-                foreach (var pedidoEmAndamento in pedidosEmAndamento)
+                var itensAndamento = context.PedidoCozinhaItems.Include(pci => pci.PedidoCozinha).ThenInclude(pc => pc.Comanda).ThenInclude(c => c.ComandaItens).ThenInclude(ci => ci.CardapioItem).Where(pci => pci.PedidoCozinha.Situacao == 2).Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
+
+                foreach (var item in itensAndamento)
                 {
-                    foreach (var item in pedidoEmAndamento.Comanda.ComandaItens)
+                    var comanda = item.PedidoCozinha.Comanda;
+                    var cardapioItem = item.ComandaItem.CardapioItem;
+
+                    if (cardapioItem.PossuiPreparo)
                     {
-                        dataGridViewAndamento.Rows.Add(pedidoEmAndamento.Comanda.NumeroMesa.ToString(), pedidoEmAndamento.Comanda.NomeCliente, item.CardapioItem.Titulo, pedidoEmAndamento.Id.ToString());
+                        dataGridViewAndamento.Rows.Add(comanda.NumeroMesa.ToString(), comanda.NomeCliente, cardapioItem.Titulo, item.PedidoCozinha.Id);
                     }
                 }
             }
@@ -65,21 +73,52 @@ namespace Comandas.WF
             dataGridViewPendentes.Rows.Clear();
             using (var context = new ComandasDbContext())
             {
-                var pedidoPendentes = context.PedidosCozinha.Where(pc => pc.Comanda.SituacaoComanda).Include(pc => pc.Comanda).ThenInclude(ci => ci.ComandaItens).ThenInclude(cai => cai.CardapioItem).Where(pc => pc.Situacao == 1).ToList();
+                var itensPendentes = context.PedidoCozinhaItems.Include(pci => pci.PedidoCozinha).ThenInclude(pc => pc.Comanda).ThenInclude(c => c.ComandaItens).ThenInclude(ci => ci.CardapioItem).Where(pci => pci.PedidoCozinha.Situacao == 1).Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
 
-                foreach (var pedidoPendente in pedidoPendentes)
+                foreach (var item in itensPendentes)
                 {
-                    foreach (var item in pedidoPendente.Comanda.ComandaItens)
+                    var comanda = item.PedidoCozinha.Comanda;
+                    var cardapioItem = item.ComandaItem.CardapioItem;
+
+                    if (cardapioItem.PossuiPreparo)
                     {
-                        dataGridViewPendentes.Rows.Add(pedidoPendente.Comanda.NumeroMesa.ToString(), pedidoPendente.Comanda.NomeCliente, item.CardapioItem.Titulo, pedidoPendente.Id.ToString());
+                        dataGridViewPendentes.Rows.Add(comanda.NumeroMesa.ToString(), comanda.NomeCliente, cardapioItem.Titulo, item.PedidoCozinha.Id);
                     }
                 }
             }
         }
 
+
         private void btnVoltar_Click(object sender, EventArgs e)
         {
+            using (var context = new ComandasDbContext())
+            {
+                if (pendenteId > 0)
+                {
+                    MessageBox.Show("pedido ja esta pendente");
+                }
+                if (emAndamentoID > 0)
+                {
+                    var pedidoCozinha = context.PedidosCozinha.First(pc => pc.Id == emAndamentoID);
 
+                    pedidoCozinha.Situacao = 1;
+
+                    context.Update(pedidoCozinha);
+                }
+                if (finalizadosID > 0)
+                {
+                    var pedidoCozinha = context.PedidosCozinha.First(pc => pc.Id == finalizadosID);
+
+                    pedidoCozinha.Situacao = 2;
+
+                    context.Update(pedidoCozinha);
+
+                }
+                context.SaveChanges();
+            }
+            CarregarDataGridPendentes();
+            CarregarDataGridEmAndamento();
+            CarregarDataGridFinalizado();
         }
 
         private void btnAvancar_Click(object sender, EventArgs e)
@@ -133,7 +172,7 @@ namespace Comandas.WF
         {
             if (dataGridViewAndamento.SelectedRows.Count > 0)
             {
-                emAndamentoID = Convert.ToInt32(dataGridViewAndamento.SelectedRows[0].Cells[3]);
+                emAndamentoID = Convert.ToInt32(dataGridViewAndamento.Rows[e.RowIndex].Cells[3].Value);
                 pendenteId = 0;
                 finalizadosID = 0;
             }
@@ -143,10 +182,17 @@ namespace Comandas.WF
         {
             if (dataGridViewFinalizados.SelectedRows.Count > 0)
             {
-                finalizadosID = Convert.ToInt32(dataGridViewFinalizados.SelectedRows[0].Cells[3]);
+                finalizadosID = Convert.ToInt32(dataGridViewFinalizados.Rows[e.RowIndex].Cells[3].Value);
                 pendenteId = 0;
                 emAndamentoID = 0;
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            CarregarDataGridPendentes();
+            CarregarDataGridEmAndamento();
+            CarregarDataGridFinalizado();
         }
     }
 }

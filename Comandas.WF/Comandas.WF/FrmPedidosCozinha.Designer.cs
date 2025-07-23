@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             dataGridViewPendentes = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
@@ -48,6 +49,7 @@
             Column6 = new DataGridViewTextBoxColumn();
             btnVoltar = new MaterialSkin.Controls.MaterialButton();
             btnAvancar = new MaterialSkin.Controls.MaterialButton();
+            timer1 = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewPendentes).BeginInit();
             groupBox2.SuspendLayout();
@@ -259,6 +261,12 @@
             btnAvancar.UseVisualStyleBackColor = true;
             btnAvancar.Click += btnAvancar_Click;
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 10000;
+            timer1.Tick += timer1_Tick;
+            // 
             // FrmPedidosCozinha
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -303,5 +311,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -58,30 +58,13 @@ namespace Comandas.WF
 
                 var itemSelecionado = context.CardapioItems.First(ci => ci.Titulo.Equals(cbxItens.Text));
 
-                bool itemJaAdicionado = false;
-
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                dataGridView1.Rows.Add(itemSelecionado.Titulo, itemSelecionado.Descricao, itemSelecionado.Preco);
+                comandaItens.Add(new ComandaItens
                 {
-
-                    if (row.Cells[0].Value != null && row.Cells[0].Value.Equals(itemSelecionado.Titulo))
-                    {
-                        int quantidadeAtual = Convert.ToInt32(row.Cells[3].Value);
-                        row.Cells[3].Value = quantidadeAtual + 1;
-
-                        itemJaAdicionado = true;
-                        break;
-                    }
-
-                }
-                if (!itemJaAdicionado)
-                {
-                    dataGridView1.Rows.Add(itemSelecionado.Titulo, itemSelecionado.Descricao, itemSelecionado.Preco, 1);
-                    comandaItens.Add(new ComandaItens
-                    {
-                        CardapioItemId = itemSelecionado.Id
-                    });
-                }
+                    CardapioItemId = itemSelecionado.Id
+                });
             }
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

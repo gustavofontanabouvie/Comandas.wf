@@ -137,7 +137,7 @@ namespace Comandas.WF
             {
                 itensAInserir.Add(new ComandaItens
                 {
-                    Comanda = comanda,
+                    ComandaId = comanda.Id,
                     CardapioItemId = item.CardapioItemId
                 });
             }

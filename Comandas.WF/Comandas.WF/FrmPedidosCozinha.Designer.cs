@@ -31,10 +31,10 @@
             components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             dataGridViewPendentes = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
             groupBox2 = new GroupBox();
             dataGridViewAndamento = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -76,41 +76,39 @@
             dataGridViewPendentes.BackgroundColor = SystemColors.ControlLight;
             dataGridViewPendentes.CellBorderStyle = DataGridViewCellBorderStyle.Raised;
             dataGridViewPendentes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPendentes.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
-            dataGridViewPendentes.Location = new Point(16, 41);
+            dataGridViewPendentes.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10 });
+            dataGridViewPendentes.Location = new Point(11, 29);
             dataGridViewPendentes.Name = "dataGridViewPendentes";
             dataGridViewPendentes.ReadOnly = true;
-            dataGridViewPendentes.Size = new Size(275, 366);
-            dataGridViewPendentes.TabIndex = 0;
-            dataGridViewPendentes.CellClick += dataGridViewPendentes_CellClick;
+            dataGridViewPendentes.Size = new Size(289, 366);
+            dataGridViewPendentes.TabIndex = 2;
             // 
-            // Column1
+            // dataGridViewTextBoxColumn7
             // 
-            Column1.FillWeight = 60.9137039F;
-            Column1.HeaderText = "Mesa";
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
+            dataGridViewTextBoxColumn7.FillWeight = 60.9137039F;
+            dataGridViewTextBoxColumn7.HeaderText = "Mesa";
+            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            dataGridViewTextBoxColumn7.ReadOnly = true;
             // 
-            // Column2
+            // dataGridViewTextBoxColumn8
             // 
-            Column2.FillWeight = 119.543152F;
-            Column2.HeaderText = "Nome do cliente";
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
+            dataGridViewTextBoxColumn8.FillWeight = 119.543152F;
+            dataGridViewTextBoxColumn8.HeaderText = "Nome do cliente";
+            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // Column3
+            // dataGridViewTextBoxColumn9
             // 
-            Column3.FillWeight = 119.543152F;
-            Column3.HeaderText = "Item";
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
+            dataGridViewTextBoxColumn9.FillWeight = 119.543152F;
+            dataGridViewTextBoxColumn9.HeaderText = "Item";
+            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            dataGridViewTextBoxColumn9.ReadOnly = true;
             // 
-            // Column4
+            // dataGridViewTextBoxColumn10
             // 
-            Column4.HeaderText = "PedidoCozinhaId";
-            Column4.Name = "Column4";
-            Column4.ReadOnly = true;
-            Column4.Visible = false;
+            dataGridViewTextBoxColumn10.HeaderText = "PedidoCozinhaId";
+            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // groupBox2
             // 
@@ -134,7 +132,7 @@
             dataGridViewAndamento.Location = new Point(15, 41);
             dataGridViewAndamento.Name = "dataGridViewAndamento";
             dataGridViewAndamento.ReadOnly = true;
-            dataGridViewAndamento.Size = new Size(275, 366);
+            dataGridViewAndamento.Size = new Size(289, 366);
             dataGridViewAndamento.TabIndex = 1;
             dataGridViewAndamento.CellClick += dataGridViewAndamento_CellClick;
             // 
@@ -164,7 +162,6 @@
             Column5.HeaderText = "PedidoCozinhaId";
             Column5.Name = "Column5";
             Column5.ReadOnly = true;
-            Column5.Visible = false;
             // 
             // groupBox3
             // 
@@ -264,7 +261,7 @@
             // timer1
             // 
             timer1.Enabled = true;
-            timer1.Interval = 10000;
+            timer1.Interval = 1000000;
             timer1.Tick += timer1_Tick;
             // 
             // FrmPedidosCozinha
@@ -292,25 +289,25 @@
         #endregion
 
         private GroupBox groupBox1;
-        private DataGridView dataGridViewPendentes;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
         private DataGridView dataGridViewFinalizados;
         private MaterialSkin.Controls.MaterialButton btnVoltar;
         private MaterialSkin.Controls.MaterialButton btnAvancar;
         private DataGridView dataGridViewAndamento;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Timer timer1;
+        private DataGridView dataGridViewPendentes;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn Column5;
     }
 }

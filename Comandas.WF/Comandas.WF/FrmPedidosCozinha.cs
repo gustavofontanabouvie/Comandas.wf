@@ -33,7 +33,13 @@ namespace Comandas.WF
             dataGridViewFinalizados.Rows.Clear();
             using (var context = new ComandasDbContext())
             {
-                var itensFinalizados = context.PedidoCozinhaItems.Include(pci => pci.PedidoCozinha).ThenInclude(pc => pc.Comanda).ThenInclude(c => c.ComandaItens).ThenInclude(ci => ci.CardapioItem).Where(pci => pci.PedidoCozinha.Situacao == 3).Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
+                var itensFinalizados = context.PedidoCozinhaItems
+                    .Include(pci => pci.PedidoCozinha)
+                        .ThenInclude(pc => pc.Comanda)
+                            .ThenInclude(c => c.ComandaItens)
+                                .ThenInclude(ci => ci.CardapioItem)
+                    .Where(pci => pci.PedidoCozinha.Situacao == 3)
+                    .Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
 
                 foreach (var item in itensFinalizados)
                 {
@@ -53,7 +59,13 @@ namespace Comandas.WF
             dataGridViewAndamento.Rows.Clear();
             using (var context = new ComandasDbContext())
             {
-                var itensAndamento = context.PedidoCozinhaItems.Include(pci => pci.PedidoCozinha).ThenInclude(pc => pc.Comanda).ThenInclude(c => c.ComandaItens).ThenInclude(ci => ci.CardapioItem).Where(pci => pci.PedidoCozinha.Situacao == 2).Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
+                var itensAndamento = context.PedidoCozinhaItems
+                    .Include(pci => pci.PedidoCozinha)
+                        .ThenInclude(pc => pc.Comanda)
+                            .ThenInclude(c => c.ComandaItens)
+                                .ThenInclude(ci => ci.CardapioItem)
+                    .Where(pci => pci.PedidoCozinha.Situacao == 2)
+                    .Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
 
                 foreach (var item in itensAndamento)
                 {
@@ -70,20 +82,50 @@ namespace Comandas.WF
 
         private void CarregarDataGridPendentes()
         {
+            dataGridViewPendentes.DataSource = null;
             dataGridViewPendentes.Rows.Clear();
             using (var context = new ComandasDbContext())
             {
-                var itensPendentes = context.PedidoCozinhaItems.Include(pci => pci.PedidoCozinha).ThenInclude(pc => pc.Comanda).ThenInclude(c => c.ComandaItens).ThenInclude(ci => ci.CardapioItem).Where(pci => pci.PedidoCozinha.Situacao == 1).Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
+                var itensPendentes2 = (from pedidoCozinhaItem in context.PedidoCozinhaItems
+                                       join pedidoCozinha in context.PedidosCozinha
+                                       on pedidoCozinhaItem.PedidoCozinhaId equals pedidoCozinha.Id
+                                       join comanda in context.Comandas
+                                       on pedidoCozinha.ComandaId equals comanda.Id
+                                       join comandaItens in context.ComandaItens
+                                       on comanda.Id equals comandaItens.ComandaId
+                                       join cardapioItem in context.CardapioItems
+                                       on comandaItens.CardapioItemId equals cardapioItem.Id
+                                       where pedidoCozinha.Situacao == 1
+                                       && comanda.SituacaoComanda
+                                       && cardapioItem.PossuiPreparo
+                                       select new
+                                       {
+                                           comanda.NumeroMesa,
+                                           comanda.NomeCliente,
+                                           cardapioItem.Titulo,
+                                           pedidoCozinha.Id
+                                       }).ToList();
 
-                foreach (var item in itensPendentes)
+
+
+                //var itensPendentes = context.PedidoCozinhaItems
+                //    .Include(pci => pci.PedidoCozinha)
+                //        .ThenInclude(pc => pc.Comanda)
+                //            .ThenInclude(c => c.ComandaItens)
+                //                .ThenInclude(ci => ci.CardapioItem)
+                //    .Where(pci => pci.PedidoCozinha.Situacao == 1)
+                //    .Where(pc => pc.PedidoCozinha.Comanda.SituacaoComanda).ToList();
+
+                foreach (var item in itensPendentes2)
                 {
-                    var comanda = item.PedidoCozinha.Comanda;
-                    var cardapioItem = item.ComandaItem.CardapioItem;
+                    ////var comanda = item.PedidoCozinha.Comanda;
+                    //var cardapioItem = item.ComandaItem.CardapioItem;
 
-                    if (cardapioItem.PossuiPreparo)
-                    {
-                        dataGridViewPendentes.Rows.Add(comanda.NumeroMesa.ToString(), comanda.NomeCliente, cardapioItem.Titulo, item.PedidoCozinha.Id);
-                    }
+                    //if (cardapioItem.PossuiPreparo)
+                    //{
+
+                    dataGridViewPendentes.Rows.Add(item.NumeroMesa.ToString(), item.NomeCliente, item.Titulo, item.Id);
+
                 }
             }
         }
